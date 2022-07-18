@@ -1,0 +1,9 @@
+﻿<Application x:Class="ATC.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ATC.Wpf" xmlns:utils="clr-namespace:ATC.Wpf.Services"
+             StartupUri="Views/SignInWindow.xaml">
+    <Application.Resources>
+        <utils:ViewModelLocator x:Key="VMLocator"/>
+    </Application.Resources>
+</Application>
