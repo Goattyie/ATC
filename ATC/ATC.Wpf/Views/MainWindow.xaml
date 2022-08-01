@@ -5,8 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATC.Wpf"
         mc:Ignorable="d"
-        Title="ATC Система" Height="768" Width="1366">
-    <Grid>
+        Title="ATC Система" Height="768" Width="1366" DataContext="{Binding Source={StaticResource VMLocator}, Path=MainWindowViewModel}">
 
+    <Window.Resources>
+        <ResourceDictionary Source="../Styles.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderThickness="0 0 1 0" BorderBrush="#FFEDE4E4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="АТС"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Звонки"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Абоненты"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Льготы"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Города"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Страны"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Районы"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Тариф"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Соц. положения"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Типы льгот"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
+                            Content="Сгенерировать"
+                            Command="{Binding GenerateData}"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Frame Grid.Column="1"
+               Margin="10 0 10 10"
+               NavigationUIVisibility="Hidden"
+               Content="{Binding CurrentPage}"/>
     </Grid>
 </Window>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ATC.Wpf.DI;
+using ATC.Wpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,16 @@ namespace ATC.Wpf.Views
         public SignInWindow()
         {
             InitializeComponent();
+
+            var vm = IoC.Resolve<SignInWindowViewModel>();
+
+            vm.OnClose += () =>
+            {
+                new MainWindow().Show();
+                Close();
+            };
+
+            DataContext = vm;
         }
     }
 }

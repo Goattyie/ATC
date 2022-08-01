@@ -12,6 +12,52 @@
                 <Setter Property="CornerRadius" Value="3" />
             </Style>
         </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFC84141" />
+                <Setter Property="Opacity" Value="1.0" />
+            </Trigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.7" To="1"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.7"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MenuBtnStyle" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFC84141" />
+                <Setter Property="Opacity" Value="1.0" />
+            </Trigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.7" To="1"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.7"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
 
     <!--TEXT BOXES-->
@@ -21,7 +67,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
-                        <Border Background="White" BorderBrush="#FFC84141"  BorderThickness="1" CornerRadius="3"/>
+                        <Border Background="White" BorderBrush="#FFC84141"  BorderThickness="0 0 0 1"/>
                         <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
                         <Label Margin="2,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
                         Visibility="Collapsed" BorderBrush="LightGray"/>
@@ -73,8 +119,8 @@
                           x:Name="Border"
                           Grid.ColumnSpan="2"
                           CornerRadius="8"
-                          Background="#E5E4EE"
-                          BorderBrush="#F6F6F6"
+                          Background="White"
+                          BorderBrush="#FFC84141"
                           BorderThickness="1" 
                         />
 
@@ -96,8 +142,8 @@
     </ControlTemplate>
 
     <Style x:Key="UsualComboBox" TargetType="{x:Type ComboBox}">
-        <Setter Property="Foreground" Value="#333" />
-        <Setter Property="BorderBrush" Value="#E5E4EE" />
+        <Setter Property="Foreground" Value="#FFC84141" />
+        <Setter Property="BorderBrush" Value="White" />
         <Setter Property="Background" Value="White" />
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -106,7 +152,7 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="FontSize" Value="13" />
         <Setter Property="MinWidth" Value="150"/>
-        <Setter Property="MinHeight" Value="35"/>
+        <Setter Property="MinHeight" Value="30"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
@@ -158,7 +204,7 @@
                                     x:Name="DropDownBorder"
                                     Background="White"
                                     BorderThickness="1"
-                                    BorderBrush="#F6F6F6"
+                                    BorderBrush="White"
                                     />
                                 <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />

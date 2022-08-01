@@ -31,9 +31,10 @@
                  Text="{Binding Password}"/>
 
         <Button Grid.Row="2"
-                MaxHeight="30"
+                Height="30"
                 MaxWidth="100"
                 Content="Войти"
+                VerticalAlignment="Center"
                 Style="{StaticResource UsualBtnStyle}"
                 Command="{Binding SignIn}"/>
     </Grid>

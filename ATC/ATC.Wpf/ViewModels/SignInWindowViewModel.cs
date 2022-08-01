@@ -1,6 +1,7 @@
-﻿using ATC.Wpf.Localization;
+﻿using ATC.Wpf.Resources;
 using ATC.Wpf.Services;
 using DevExpress.Mvvm;
+using System;
 
 namespace ATC.Wpf.ViewModels
 {
@@ -15,6 +16,7 @@ namespace ATC.Wpf.ViewModels
             Password = PASSWORD;
         }
         
+        public Action OnClose { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public IDelegateCommand SignIn => new DelegateCommand(() =>
@@ -30,6 +32,8 @@ namespace ATC.Wpf.ViewModels
                 MessageBoxManager.ShowError(Errors.WrongPassword);
                 return;
             }
+
+            OnClose?.Invoke();
         });
     }
 }
