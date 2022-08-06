@@ -11,13 +11,21 @@ namespace ATC.Wpf.Services
         private readonly TariffGenerator _tariffGenerator;
         private readonly BenefitTypeGenerator _benefitTypeGenerator;
         private readonly SocialStatusGenerator _socialStatusGenerator;
+        private readonly BenefitGenerator _benefitGenerator;
+        private readonly AbonentGenerator _abonentGenerator;
+        private readonly AtcGenerator _atcGenerator;
+        private readonly CallGenerator _callGenerator;
 
         public DataInitializer(CountryGenerator countryGenerator, 
             CityGenerator cityGenerator,
             AreaGenerator areaGenerator,
             TariffGenerator tariffGenerator,
             BenefitTypeGenerator benefitTypeGenerator,
-            SocialStatusGenerator socialStatusGenerator)
+            SocialStatusGenerator socialStatusGenerator,
+            BenefitGenerator benefitGenerator,
+            AbonentGenerator abonentGenerator,
+            AtcGenerator atcGenerator, 
+            CallGenerator callGenerator)
         {
             _countryGenerator = countryGenerator;
             _cityGenerator = cityGenerator;
@@ -25,6 +33,10 @@ namespace ATC.Wpf.Services
             _tariffGenerator = tariffGenerator;
             _benefitTypeGenerator = benefitTypeGenerator;
             _socialStatusGenerator = socialStatusGenerator;
+            _benefitGenerator = benefitGenerator;
+            _abonentGenerator = abonentGenerator;
+            _atcGenerator = atcGenerator;
+            _callGenerator = callGenerator;
         }
 
         public async Task Generate()
@@ -35,6 +47,10 @@ namespace ATC.Wpf.Services
             await _tariffGenerator.Generate();
             await _benefitTypeGenerator.Generate();
             await _socialStatusGenerator.Generate();
+            await _benefitGenerator.Generate();
+            await _abonentGenerator.Generate();
+            await _atcGenerator.Generate();
+            await _callGenerator.Generate();
         }
     }
 }

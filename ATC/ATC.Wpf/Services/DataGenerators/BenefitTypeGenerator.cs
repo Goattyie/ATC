@@ -5,41 +5,34 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class BenefitTypeGenerator
+    internal class BenefitTypeGenerator : AbstractGenerator<BenefitType>
     {
-        private readonly IBenefitTypeRepository _repository;
-        private readonly NpgsqlConnection _connection;
+        public static int Count = 7;
 
-        public BenefitTypeGenerator(IBenefitTypeRepository repository, NpgsqlConnection connection)
+        public BenefitTypeGenerator(IBenefitTypeRepository repository, NpgsqlConnection connection) : base(repository, connection) { }
+
+        protected override async Task Clear()
         {
-            _repository = repository;
-            _connection = connection;
-        }
+            await Connection.OpenAsync();
 
-        public async Task Generate()
-        {
-            await Clear(_connection);
-            await GenerateData();
-        }
-
-        private async Task Clear(NpgsqlConnection connection)
-        {
-            await _connection.OpenAsync();
-
-            var cmd = connection.CreateCommand();
+            var cmd = Connection.CreateCommand();
 
             cmd.CommandText = "TRUNCATE benefit_types CASCADE; ALTER SEQUENCE benefit_types_id_seq RESTART WITH 1;";
 
             await cmd.ExecuteNonQueryAsync();
-            await _connection.CloseAsync();
+            await Connection.CloseAsync();
 
         }
 
-        private async Task GenerateData()
+        protected override async Task GenerateData()
         {
-            await _repository.Create(new BenefitType { Name = "Обычный" });
-            await _repository.Create(new BenefitType { Name = "Экстра" });
-            await _repository.Create(new BenefitType { Name = "Высочайший" });
+            await Repository.Create(new BenefitType { Name = "Обычный" });
+            await Repository.Create(new BenefitType { Name = "Экстра" });
+            await Repository.Create(new BenefitType { Name = "Высочайший" });
+            await Repository.Create(new BenefitType { Name = "Удобный" });
+            await Repository.Create(new BenefitType { Name = "Скромный" });
+            await Repository.Create(new BenefitType { Name = "VIP" });
+            await Repository.Create(new BenefitType { Name = "Лучший" });
         }
     }
 }

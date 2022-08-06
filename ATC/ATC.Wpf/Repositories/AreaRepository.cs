@@ -19,11 +19,7 @@ namespace ATC.Wpf.Repositories
             cmd.Parameters.AddWithValue("c_id", model.CityId);
             await cmd.ExecuteNonQueryAsync();
 
-            await using var cmd2 = new NpgsqlCommand($"SELECT id FROM areas WHERE name = @name AND city_id = @c_id", Connection);
-
-            cmd2.Parameters.AddWithValue("name", model.Name);
-            cmd2.Parameters.AddWithValue("c_id", model.CityId);
-
+            await using var cmd2 = new NpgsqlCommand($"SELECT currval('areas_id_seq');", Connection);
             await using var reader = await cmd2.ExecuteReaderAsync();
 
             await reader.ReadAsync();

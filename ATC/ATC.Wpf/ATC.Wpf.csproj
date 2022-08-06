@@ -34,4 +34,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Tables\Atc\" />
+  </ItemGroup>
+
 </Project>

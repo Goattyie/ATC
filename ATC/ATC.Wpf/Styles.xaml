@@ -97,6 +97,7 @@
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="CanUserDeleteRows" Value="False"/>
         <Setter Property="FontSize" Value="17"/>
+        <Setter Property="BorderBrush" Value="#FFC84141"/>
     </Style>
 
     <!--BORDERS-->

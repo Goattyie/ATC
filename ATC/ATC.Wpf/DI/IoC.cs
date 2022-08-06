@@ -33,6 +33,10 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITariffRepository, TariffRepository>();
             services.AddTransient<IBenefitTypeRepository, BenefitTypeRepository>();
             services.AddTransient<ISocialStatusRepository, SocialStatusRepository>();
+            services.AddTransient<IBenefitRepository, BenefitRepository>();
+            services.AddTransient<IAbonentRepository, AbonentRepository>();
+            services.AddTransient<IAtcRepository, AtcRepository>();
+            services.AddTransient<ICallRepository, CallRepository>();
 
             #endregion
 
@@ -44,6 +48,10 @@ namespace ATC.Wpf.DI
             services.AddTransient<TariffGenerator>();
             services.AddTransient<BenefitTypeGenerator>();
             services.AddTransient<SocialStatusGenerator>();
+            services.AddTransient<BenefitGenerator>();
+            services.AddTransient<AbonentGenerator>();
+            services.AddTransient<AtcGenerator>();
+            services.AddTransient<CallGenerator>();
             services.AddTransient<DataInitializer>();
 
             #endregion

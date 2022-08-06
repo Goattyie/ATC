@@ -5,46 +5,35 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class CityGenerator
+    internal class CityGenerator : AbstractGenerator<City>
     {
-        private readonly ICityRepository _repository;
-        private readonly NpgsqlConnection _connection;
+        public static int Count = 8;
 
-        public CityGenerator(ICityRepository repository, NpgsqlConnection connection)
+        public CityGenerator(ICityRepository repository, NpgsqlConnection connection) : base(repository, connection) { }
+
+        protected override async Task Clear()
         {
-            _repository = repository;
-            _connection = connection;
-        }
+            await Connection.OpenAsync();
 
-        public async Task Generate()
-        {
-            await Clear(_connection);
-            await GenerateData();
-        }
-
-        private async Task Clear(NpgsqlConnection connection)
-        {
-            await _connection.OpenAsync();
-
-            var cmd = connection.CreateCommand();
+            var cmd = Connection.CreateCommand();
 
             cmd.CommandText = "TRUNCATE cities CASCADE; ALTER SEQUENCE cities_id_seq RESTART WITH 1;";
 
             await cmd.ExecuteNonQueryAsync();
-            await _connection.CloseAsync();
+            await Connection.CloseAsync();
 
         }
 
-        private async Task GenerateData()
+        protected override async Task GenerateData()
         {
-            await _repository.Create(new City { Name = "Таганрог", CountryId = 1 });
-            await _repository.Create(new City { Name = "Ростов-На-Дону", CountryId = 1 });
-            await _repository.Create(new City { Name = "Краснодар", CountryId = 1 });
-            await _repository.Create(new City { Name = "Москва", CountryId = 1 });
-            await _repository.Create(new City { Name = "Киев", CountryId = 2 });
-            await _repository.Create(new City { Name = "Харьков", CountryId = 2 });
-            await _repository.Create(new City { Name = "Херсон", CountryId = 2 });
-            await _repository.Create(new City { Name = "Минск", CountryId = 3 });
+            await Repository.Create(new City { Name = "Таганрог", CountryId = 1 });
+            await Repository.Create(new City { Name = "Ростов-На-Дону", CountryId = 1 });
+            await Repository.Create(new City { Name = "Краснодар", CountryId = 1 });
+            await Repository.Create(new City { Name = "Москва", CountryId = 1 });
+            await Repository.Create(new City { Name = "Киев", CountryId = 2 });
+            await Repository.Create(new City { Name = "Харьков", CountryId = 2 });
+            await Repository.Create(new City { Name = "Херсон", CountryId = 2 });
+            await Repository.Create(new City { Name = "Минск", CountryId = 3 });
         }
     }
 }
