@@ -1,7 +1,10 @@
-﻿namespace ATC.Wpf.Models
+﻿using System.ComponentModel;
+
+namespace ATC.Wpf.Models
 {
-    internal class BaseModel
+    internal abstract class BaseModel
     {
-        public int Id { get; set; }
+        [DisplayName("id")]
+        public virtual int Id { get; set; }
     }
 }

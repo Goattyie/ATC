@@ -1,0 +1,105 @@
+﻿<Window x:Class="ATC.Wpf.Views.Tables.Atc.UpdateAtcWindow"
+        Name="AtcUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Atc"
+        mc:Ignorable="d"
+        Title="Обновить ATC станцию" Height="400" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UpdateAtcWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Название"
+                 MaxHeight="30"
+                 Text="{Binding Atc.Name}"/>
+
+        <TextBox Grid.Row="1" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Код"
+                 MaxHeight="30"
+                 Text="{Binding Atc.Code}"/>
+
+        <TextBox Grid.Row="2" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Адрес"
+                 MaxHeight="30"
+                 Text="{Binding Atc.Address}"/>
+
+        <TextBox Grid.Row="3" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Год открытия"
+                 MaxHeight="30"
+                 Text="{Binding Atc.OpenYear}"/>
+
+        <ComboBox Grid.Row="4" 
+                  Style="{StaticResource UsualComboBox}"
+                  MaxHeight="30"
+                  ItemsSource="{Binding Areas}"
+                  SelectedItem="{Binding SelectedArea}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="employee">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding CityName}" />
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="30"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <CheckBox VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      IsChecked="{Binding Atc.IsState}"/>
+            <CheckBox Grid.Row="1"
+                      VerticalAlignment="Center"
+                      IsChecked="{Binding Atc.License}"
+                      HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Column="1"
+                       Text="Государственная"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Лицензия"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+        </Grid>
+
+        <Button Grid.Row="6"
+                Style="{StaticResource UsualBtnStyle}"
+                MaxHeight="30"
+                Content="Изменить"
+                Command="{Binding UpdateCommand}"
+                CommandParameter="{Binding ElementName=AtcUpdateWindow}"/>
+    </Grid>
+</Window>
+

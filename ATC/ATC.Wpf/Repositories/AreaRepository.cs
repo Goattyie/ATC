@@ -1,6 +1,7 @@
 ﻿using ATC.Wpf.Models;
 using ATC.Wpf.Repositories.Interfaces;
 using Npgsql;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ATC.Wpf.Repositories
@@ -10,6 +11,10 @@ namespace ATC.Wpf.Repositories
         public AreaRepository(NpgsqlConnection connection) : base(connection)
         {
         }
+
+        protected override string SelectQuery => "SELECT areas.id as id, areas.name as name, city.id as city_id, city.name as city_name " +
+            "FROM areas " +
+            "JOIN cities city ON city.id = areas.city_id";
 
         protected override async Task OnCreate(Area model)
         {
@@ -25,6 +30,16 @@ namespace ATC.Wpf.Repositories
             await reader.ReadAsync();
 
             model.Id = reader.GetInt32(0);
+        }
+
+        protected override Task OnDelete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override Task OnUpdate(Area model)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

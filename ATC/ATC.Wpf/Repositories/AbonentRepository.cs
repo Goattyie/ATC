@@ -1,6 +1,7 @@
 ﻿using ATC.Wpf.Models;
 using ATC.Wpf.Repositories.Interfaces;
 using Npgsql;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ATC.Wpf.Repositories
@@ -10,6 +11,8 @@ namespace ATC.Wpf.Repositories
         public AbonentRepository(NpgsqlConnection connection) : base(connection)
         {
         }
+
+        protected override string SelectQuery => throw new System.NotImplementedException();
 
         protected override async Task OnCreate(Abonent model)
         {
@@ -30,6 +33,16 @@ namespace ATC.Wpf.Repositories
             await reader.ReadAsync();
 
             model.Id = reader.GetInt32(0);
+        }
+
+        protected override Task OnDelete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override Task OnUpdate(Abonent model)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

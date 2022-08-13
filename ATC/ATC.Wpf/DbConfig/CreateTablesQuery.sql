@@ -89,8 +89,8 @@ CREATE TABLE calls(
     time TIME NOT NULL,
     tariff_id INTEGER NOT NULL,
     abonent_id INTEGER NOT NULL,
-    CONSTRAINT fk_atc_id FOREIGN KEY (atc_id) REFERENCES atces(id),
-    CONSTRAINT fk_city_id FOREIGN KEY (city_id) REFERENCES cities(id),
-    CONSTRAINT fk_tariff_id FOREIGN KEY (tariff_id) REFERENCES tariffs(id),
-    CONSTRAINT fk_abonent_id FOREIGN KEY (abonent_id) REFERENCES abonents(id)
+    CONSTRAINT fk_atc_id FOREIGN KEY (atc_id) REFERENCES atces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_city_id FOREIGN KEY (city_id) REFERENCES cities(id)  ON DELETE CASCADE,
+    CONSTRAINT fk_tariff_id FOREIGN KEY (tariff_id) REFERENCES tariffs(id)  ON DELETE CASCADE,
+    CONSTRAINT fk_abonent_id FOREIGN KEY (abonent_id) REFERENCES abonents(id)  ON DELETE CASCADE
 );

@@ -4,6 +4,7 @@ using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.ViewModels;
+using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.Views.Tables;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
@@ -60,6 +61,9 @@ namespace ATC.Wpf.DI
 
             services.AddTransient<SignInWindowViewModel>();
             services.AddTransient<MainWindowViewModel>();
+            services.AddTransient<AtcPageViewModel>();
+            services.AddTransient<CreateAtcWindowViewModel>();
+            services.AddTransient<UpdateAtcWindowViewModel>();
 
             #endregion
 
@@ -68,6 +72,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, AtcPage>();
 
             #endregion
+
+            services.AddSingleton(new MessageBus());
+            services.AddSingleton(new EventBus());
 
             _serviceProvider = services.BuildServiceProvider();
         }

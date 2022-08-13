@@ -8,5 +8,10 @@ namespace ATC.Wpf.Services
         {
             MessageBox.Show(msg, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        public static void ShowInformation(string msg)
+        {
+            MessageBox.Show(msg, "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

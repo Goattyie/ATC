@@ -5,7 +5,7 @@ namespace ATC.Wpf.Models
     internal class Call : BaseModel
     {
         public int AtcId { get; set; }
-        public Atc Atc { get; set; }
+        public AtcModel Atc { get; set; }
         public int CityId { get; set; }
         public City City { get; set; }
         public decimal Cost { get; set; }

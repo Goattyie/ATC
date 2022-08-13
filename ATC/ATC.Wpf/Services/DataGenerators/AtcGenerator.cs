@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class AtcGenerator : AbstractGenerator<Atc>
+    internal class AtcGenerator : AbstractGenerator<AtcModel>
     {
         public static int Count = 10000;
 
@@ -42,7 +42,7 @@ namespace ATC.Wpf.Services.DataGenerators
 
             for(int i = 0; i < Count; i++)
             {
-                await Repository.Create(new Atc
+                await Repository.Create(new AtcModel
                 {
                     Code = $"#{random.Next(1, 10000000)}",
                     Name = $"ATC {random.Next()}",
