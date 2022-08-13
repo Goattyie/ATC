@@ -14,20 +14,18 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
     {
         private readonly IAreaRepository _areaRepository;
         private readonly IAtcRepository _atcRepository;
-        private readonly MessageBus _messageBus;
         private readonly EventBus _eventBus;
 
         public UpdateAtcWindowViewModel(IAtcRepository atcRepository, IAreaRepository areaRepository, MessageBus messageBus, EventBus eventBus)
         {
             _areaRepository = areaRepository;
             _atcRepository = atcRepository;
-            _messageBus = messageBus;
             _eventBus = eventBus;
 
             Atc = new();
             Areas = new();
 
-            _messageBus.Recieve<AtcModelMessage>(this, LoadAtcModel);
+            messageBus.Recieve<AtcModelMessage>(this, LoadAtcModel);
         }
 
         public Action OnClose { get; set; }

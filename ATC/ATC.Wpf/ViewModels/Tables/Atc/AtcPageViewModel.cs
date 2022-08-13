@@ -83,6 +83,5 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
             foreach (var item in list)
                 Atces.Add(item);
         }
-
     }
 }

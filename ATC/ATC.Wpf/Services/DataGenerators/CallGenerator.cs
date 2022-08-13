@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class CallGenerator : AbstractGenerator<Call>
+    internal class CallGenerator : AbstractGenerator<CallModel>
     {
         public static int Count = 10000;
 
@@ -32,7 +32,7 @@ namespace ATC.Wpf.Services.DataGenerators
 
             for(int i = 0; i < Count; i++)
             {
-                await Repository.Create(new Call
+                await Repository.Create(new CallModel
                 {
                     AtcId = random.Next(1, AtcGenerator.Count),
                     CallDate = DateTime.UtcNow.AddDays(-random.Next(1, 10000)),

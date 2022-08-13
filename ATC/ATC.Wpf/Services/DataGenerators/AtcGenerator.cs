@@ -8,7 +8,7 @@ namespace ATC.Wpf.Services.DataGenerators
 {
     internal class AtcGenerator : AbstractGenerator<AtcModel>
     {
-        public static int Count = 10000;
+        public static int Count = 50;
 
         private readonly string[] _streets = new string[]
         {

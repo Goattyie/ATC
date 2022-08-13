@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface ICallRepository : IRepository<Call>
+    internal interface ICallRepository : IRepository<CallModel>
     {
     }
 }

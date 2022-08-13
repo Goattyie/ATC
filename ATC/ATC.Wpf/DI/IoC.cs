@@ -5,7 +5,9 @@ using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.ViewModels;
 using ATC.Wpf.ViewModels.Tables.Atc;
+using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.Views.Tables;
+using ATC.Wpf.Views.Tables.Call;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using System;
@@ -22,7 +24,7 @@ namespace ATC.Wpf.DI
 
             #region Database
 
-            services.AddSingleton(new NpgsqlConnection("server=127.0.0.1;port=5432;database=ATCDB;user id=postgres;password=9156;Pooling=true;Timeout=60;Command Timeout=60;"));
+            services.AddTransient(o => new NpgsqlConnection("server=127.0.0.1;port=5432;database=ATCDB;user id=postgres;password=9156;Pooling=true;Timeout=60;Command Timeout=60;"));
 
             #endregion
 
@@ -64,12 +66,16 @@ namespace ATC.Wpf.DI
             services.AddTransient<AtcPageViewModel>();
             services.AddTransient<CreateAtcWindowViewModel>();
             services.AddTransient<UpdateAtcWindowViewModel>();
+            services.AddTransient<CallPageViewModel>();
+            services.AddTransient<CreateCallWindowViewModel>();
+            services.AddTransient<UpdateCallWindowViewModel>();
 
             #endregion
 
             #region Table Pages
 
             services.AddTransient<ITablePage, AtcPage>();
+            services.AddTransient<ITablePage, CallPage>();
 
             #endregion
 

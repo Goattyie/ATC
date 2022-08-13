@@ -12,7 +12,7 @@ namespace ATC.Wpf.Repositories
         {
         }
 
-        protected override string SelectQuery => throw new System.NotImplementedException();
+        protected override string SelectQuery => "SELECT * FROM tariffs";
 
         protected override async Task OnCreate(Tariff model)
         {

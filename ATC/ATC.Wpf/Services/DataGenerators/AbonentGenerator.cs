@@ -8,7 +8,7 @@ namespace ATC.Wpf.Services.DataGenerators
 {
     internal class AbonentGenerator : AbstractGenerator<Abonent>
     {
-        public static int Count = 10000;
+        public static int Count = 600;
 
         private string[] _maleNames = new string[]
         {
@@ -101,7 +101,8 @@ namespace ATC.Wpf.Services.DataGenerators
                     LastName = _maleLastNames[random.Next(_maleLastNames.Length)],
                     Phone = $"+7{random.NextInt64(1000000000, 9999999999)}",
                     BenefitId = random.Next(1, BenefitGenerator.Count),
-                    SocialStatusId = random.Next(1, SocialStatusGenerator.Count)
+                    SocialStatusId = random.Next(1, SocialStatusGenerator.Count),
+                    Photo = "Photos/BasePhoto.jpg"
                 });
             }
         }

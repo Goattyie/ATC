@@ -1,15 +1,4 @@
-﻿DELETE FROM abonents; ALTER SEQUENCE abonents_id_seq RESTART WITH 1;
-DELETE FROM atces; ALTER SEQUENCE atces_id_seq RESTART WITH 1;
-DELETE FROM calls; ALTER SEQUENCE calls_id_seq RESTART WITH 1;
-TRUNCATE areas CASCADE; ALTER SEQUENCE areas_id_seq RESTART WITH 1;
-TRUNCATE benefits CASCADE; ALTER SEQUENCE benefits_id_seq RESTART WITH 1;
-TRUNCATE benefit_types CASCADE; ALTER SEQUENCE benefit_types_id_seq RESTART WITH 1;
-TRUNCATE cities CASCADE; ALTER SEQUENCE cities_id_seq RESTART WITH 1;
-TRUNCATE countries CASCADE; ALTER SEQUENCE countries_id_seq RESTART WITH 1;
-TRUNCATE social_statuses CASCADE; ALTER SEQUENCE social_statuses_id_seq RESTART WITH 1;
-TRUNCATE tariffs CASCADE; ALTER SEQUENCE tariffs_id_seq RESTART WITH 1;
-
-CREATE TABLE countries( 
+﻿CREATE TABLE countries( 
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE
 );
@@ -51,7 +40,6 @@ CREATE TABLE benefits(
     benefit_type_id INTEGER NOT NULL,
     conditions TEXT,
     tariff TEXT,
-    photo TEXT,
     CONSTRAINT fk_benefit_type_id FOREIGN KEY (benefit_type_id) REFERENCES benefit_types(id)
 );
 
@@ -60,7 +48,8 @@ CREATE TABLE abonents(
     first_name TEXT NOT NULL,
     second_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    phone TEXT,
+    phone TEXT NOT NULL,
+    photo TEXT NOT NULL,
     benefit_id INTEGER NOT NULL,
     social_status_id INTEGER NOT NULL,
     CONSTRAINT fk_benefit_id FOREIGN KEY (benefit_id) REFERENCES benefits(id),

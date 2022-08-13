@@ -106,6 +106,12 @@
         <Setter Property="CornerRadius" Value="10"/>
     </Style>
 
+    <!--BORDERS-->
+    <Style x:Key="DefaultDatePickerTextBox" TargetType="DatePickerTextBox">
+        <Setter Property="BorderBrush" Value="#FFC84141"/>
+        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+    </Style>
+
     <!--COMBO BOXES-->
     <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
         <Setter Property="Template">

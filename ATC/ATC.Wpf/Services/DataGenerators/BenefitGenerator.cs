@@ -35,7 +35,6 @@ namespace ATC.Wpf.Services.DataGenerators
                     BenefitTypeId = random.Next(1, BenefitTypeGenerator.Count), 
                     Conditions = $"Условие #{random.Next(1000)}", 
                     Tariff = $"Тариф #{random.Next(100)}", 
-                    Photo = "Photos/BasePhoto.jpg" 
                 });
         }
     }

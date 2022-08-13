@@ -11,7 +11,9 @@ namespace ATC.Wpf.Repositories
 
         public CityRepository(NpgsqlConnection npgsqlConnection) : base(npgsqlConnection) { }
 
-        protected override string SelectQuery => throw new System.NotImplementedException();
+        protected override string SelectQuery => "SELECT city.id AS id, city.name AS name, country_id, country.name AS country_name " +
+            "FROM cities city " +
+            "JOIN countries country ON country.id = city.country_id";
 
         protected override async Task OnCreate(City model)
         {

@@ -2,6 +2,8 @@
 using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
+using ATC.Wpf.Views.Tables;
+using ATC.Wpf.Views.Tables.Call;
 using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,15 @@ namespace ATC.Wpf.ViewModels
         }
 
         public ITablePage CurrentPage { get; set; }
+
+        public IDelegateCommand SelectTablePage => new DelegateCommand<string>((string table) =>
+        {
+            switch (table)
+            {
+                case "atc": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AtcPage)); break;
+                case "call": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CallPage)); break;
+            }
+        });
 
         public IAsyncCommand GenerateData => new AsyncCommand(async () =>
         {

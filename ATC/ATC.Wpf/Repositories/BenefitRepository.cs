@@ -16,12 +16,11 @@ namespace ATC.Wpf.Repositories
 
         protected override async Task OnCreate(Benefit model)
         {
-            await using var cmd = new NpgsqlCommand("INSERT INTO benefits (benefit_type_id, conditions, tariff, photo) VALUES (@b_id, @cond, @tariff, @photo)", Connection);
+            await using var cmd = new NpgsqlCommand("INSERT INTO benefits (benefit_type_id, conditions, tariff) VALUES (@b_id, @cond, @tariff)", Connection);
 
             cmd.Parameters.AddWithValue("b_id", model.BenefitTypeId);
             cmd.Parameters.AddWithValue("cond", model.Conditions);
             cmd.Parameters.AddWithValue("tariff", model.Tariff);
-            cmd.Parameters.AddWithValue("photo", model.Photo);
             await cmd.ExecuteNonQueryAsync();
 
             await using var cmd2 = new NpgsqlCommand("SELECT currval('benefits_id_seq');", Connection);
