@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Models
 {
-    internal class Benefit : BaseModel
+    internal class BenefitModel : BaseModel
     {
         [DisplayName("benefit_type_id")]
         public int BenefitTypeId { get; set; }

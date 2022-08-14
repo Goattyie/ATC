@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class BenefitGenerator : AbstractGenerator<Benefit>
+    internal class BenefitGenerator : AbstractGenerator<BenefitModel>
     {
         public static int Count = 10;
 
@@ -30,7 +30,7 @@ namespace ATC.Wpf.Services.DataGenerators
             var random = new Random();
 
             for (int i = 0; i < Count; i++)
-                await Repository.Create(new Benefit 
+                await Repository.Create(new BenefitModel 
                 { 
                     BenefitTypeId = random.Next(1, BenefitTypeGenerator.Count), 
                     Conditions = $"Условие #{random.Next(1000)}", 

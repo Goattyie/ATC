@@ -49,6 +49,8 @@
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
                             Content="Льготы"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="benefit"
                             Style="{StaticResource MenuBtnStyle}"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"

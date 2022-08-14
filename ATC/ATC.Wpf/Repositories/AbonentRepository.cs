@@ -40,9 +40,13 @@ namespace ATC.Wpf.Repositories
             model.Id = reader.GetInt32(0);
         }
 
-        protected override Task OnDelete(int id)
+        protected override async Task OnDelete(int id)
         {
-            throw new System.NotImplementedException();
+            await using var cmd = new NpgsqlCommand("DELETE FROM abonents WHERE id = @id ", Connection);
+
+            cmd.Parameters.AddWithValue("id", id);
+
+            await cmd.ExecuteNonQueryAsync();
         }
 
         protected override async Task OnUpdate(AbonentModel model)

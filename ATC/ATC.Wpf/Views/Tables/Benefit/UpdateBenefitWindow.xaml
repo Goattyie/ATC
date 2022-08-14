@@ -1,0 +1,49 @@
+﻿<Window x:Class="ATC.Wpf.Views.Tables.Benefit.UpdateBenefitWindow"
+        Name="BenefitUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Benefit"
+        mc:Ignorable="d"
+        Title="Обновление льготы" Height="400" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UpdateBenefitWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Тариф"
+                 MaxHeight="30"
+                 Text="{Binding Benefit.Tariff}"/>
+
+        <TextBox Grid.Row="1" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Условия"
+                 MaxHeight="30"
+                 Text="{Binding Benefit.Conditions}"/>
+
+        <ComboBox Grid.Row="2" 
+                  Style="{StaticResource UsualComboBox}"
+                  MaxHeight="30"
+                  DisplayMemberPath="Name"
+                  ItemsSource="{Binding BenefitTypes}"
+                  SelectedItem="{Binding SelectedBenefitType}"/>
+
+        <Button Grid.Row="3"
+                Style="{StaticResource UsualBtnStyle}"
+                MaxHeight="30"
+                Content="Изменить"
+                Command="{Binding UpdateCommand}"
+                CommandParameter="{Binding ElementName=BenefitUpdateWindow}"/>
+
+    </Grid>
+</Window>
+

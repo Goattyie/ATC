@@ -44,8 +44,8 @@ namespace ATC.Wpf.ViewModels.Tables.Abonent
 
         public ImageSource ImageSource { get; set; }
         public AbonentModel Abonent { get; set; }
-        public ObservableCollection<Benefit> Benefits { get; set; }
-        public Benefit SelectedBenefit { get; set; }
+        public ObservableCollection<BenefitModel> Benefits { get; set; }
+        public BenefitModel SelectedBenefit { get; set; }
         public ObservableCollection<SocialStatus> SocialStatuses { get; set; }
         public SocialStatus SelectedSocialStatus { get; set; }
         public IDelegateCommand LoadPhoto => new DelegateCommand(() =>

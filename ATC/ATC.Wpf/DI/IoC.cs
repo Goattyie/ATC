@@ -6,9 +6,11 @@ using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.ViewModels;
 using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Atc;
+using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
+using ATC.Wpf.Views.Tables.Benefit;
 using ATC.Wpf.Views.Tables.Call;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -75,6 +77,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<AbonentPageViewModel>();
             services.AddTransient<CreateAbonentWindowViewModel>();
             services.AddTransient<UpdateAbonentWindowViewModel>();
+            services.AddTransient<BenefitPageViewModel>();
+            services.AddTransient<CreateBenefitWindowViewModel>();
+            services.AddTransient<UpdateBenefitWindowViewModel>();
 
             #endregion
 
@@ -83,6 +88,7 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, AtcPage>();
             services.AddTransient<ITablePage, CallPage>();
             services.AddTransient<ITablePage, AbonentPage>();
+            services.AddTransient<ITablePage, BenefitPage>();
 
             #endregion
 

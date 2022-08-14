@@ -7,14 +7,14 @@ CREATE TABLE cities(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     country_id INTEGER NOT NULL,
-    CONSTRAINT fk_country_id FOREIGN KEY (country_id) REFERENCES countries(id)
+    CONSTRAINT fk_country_id FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE
 );
 
 CREATE TABLE areas( 
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     city_id INTEGER NOT NULL,
-    CONSTRAINT fk_city_id FOREIGN KEY (city_id) REFERENCES cities(id)
+    CONSTRAINT fk_city_id FOREIGN KEY (city_id) REFERENCES cities(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tariffs( 
@@ -40,7 +40,7 @@ CREATE TABLE benefits(
     benefit_type_id INTEGER NOT NULL,
     conditions TEXT,
     tariff TEXT,
-    CONSTRAINT fk_benefit_type_id FOREIGN KEY (benefit_type_id) REFERENCES benefit_types(id)
+    CONSTRAINT fk_benefit_type_id FOREIGN KEY (benefit_type_id) REFERENCES benefit_types(id) ON DELETE CASCADE
 );
 
 CREATE TABLE abonents( 
@@ -52,8 +52,8 @@ CREATE TABLE abonents(
     photo TEXT NOT NULL,
     benefit_id INTEGER NOT NULL,
     social_status_id INTEGER NOT NULL,
-    CONSTRAINT fk_benefit_id FOREIGN KEY (benefit_id) REFERENCES benefits(id),
-    CONSTRAINT fk_social_status FOREIGN KEY (social_status_id) REFERENCES social_statuses(id)
+    CONSTRAINT fk_benefit_id FOREIGN KEY (benefit_id) REFERENCES benefits(id) ON DELETE CASCADE,
+    CONSTRAINT fk_social_status FOREIGN KEY (social_status_id) REFERENCES social_statuses(id) ON DELETE CASCADE
 );
 
 CREATE TABLE atces( 
@@ -65,7 +65,7 @@ CREATE TABLE atces(
     open_year INTEGER NOT NULL,
     is_state BOOLEAN NOT NULL,
     license BOOLEAN NOT NULL,
-    CONSTRAINT fk_area_id FOREIGN KEY (area_id) REFERENCES areas(id)
+    CONSTRAINT fk_area_id FOREIGN KEY (area_id) REFERENCES areas(id) ON DELETE CASCADE
 );
 
 CREATE TABLE calls( 
