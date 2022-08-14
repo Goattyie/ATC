@@ -3,6 +3,7 @@ using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.Views.Tables;
+using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Call;
 using DevExpress.Mvvm;
 using System;
@@ -31,6 +32,7 @@ namespace ATC.Wpf.ViewModels
             {
                 case "atc": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AtcPage)); break;
                 case "call": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CallPage)); break;
+                case "abonent": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AbonentPage)); break;
             }
         });
 

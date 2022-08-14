@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class AbonentGenerator : AbstractGenerator<Abonent>
+    internal class AbonentGenerator : AbstractGenerator<AbonentModel>
     {
         public static int Count = 600;
 
@@ -94,7 +94,7 @@ namespace ATC.Wpf.Services.DataGenerators
 
             for(int i = 0; i < Count; i++)
             {
-                await Repository.Create(new Abonent 
+                await Repository.Create(new AbonentModel 
                 { 
                     FirstName = _maleNames[random.Next(_maleNames.Length)], 
                     SecondName = _maleSecondNames[random.Next(_maleSecondNames.Length)],

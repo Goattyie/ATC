@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Repositories
 {
-    internal class AbonentRepository : AbstractRepository<Abonent>, IAbonentRepository
+    internal class AbonentRepository : AbstractRepository<AbonentModel>, IAbonentRepository
     {
         public AbonentRepository(NpgsqlConnection connection) : base(connection)
         {
@@ -15,9 +15,10 @@ namespace ATC.Wpf.Repositories
         protected override string SelectQuery => "SELECT abonent.id AS id, first_name, second_name, last_name, phone, benefit_id, benefit.conditions AS benefit_conditions, social_status_id, social_status.name AS social_status_name, photo " +
             "FROM abonents abonent " +
             "JOIN benefits benefit ON benefit.id = abonent.benefit_id " +
-            "JOIN social_statuses social_status ON social_status.id = abonent.social_status_id";
+            "JOIN social_statuses social_status ON social_status.id = abonent.social_status_id " +
+            "ORDER BY abonent.id";
 
-        protected override async Task OnCreate(Abonent model)
+        protected override async Task OnCreate(AbonentModel model)
         {
             await using var cmd = new NpgsqlCommand("INSERT INTO abonents (first_name, second_name, last_name, phone, benefit_id, social_status_id, photo) " +
                 "VALUES (@f_n, @s_n, @l_n, @phone, @b_id, @s_s_id, @photo)", Connection);
@@ -44,9 +45,21 @@ namespace ATC.Wpf.Repositories
             throw new System.NotImplementedException();
         }
 
-        protected override Task OnUpdate(Abonent model)
+        protected override async Task OnUpdate(AbonentModel model)
         {
-            throw new System.NotImplementedException();
+            await using var cmd = new NpgsqlCommand("UPDATE abonents SET first_name = @first_name, second_name = @second_name, last_name = @last_name, phone = @phone, photo = @photo, benefit_id = @benefit_id, social_status_id = @social_status_id " +
+                "WHERE id = @id; ", Connection);
+
+            cmd.Parameters.AddWithValue("id", model.Id);
+            cmd.Parameters.AddWithValue("first_name", model.FirstName);
+            cmd.Parameters.AddWithValue("second_name", model.SecondName);
+            cmd.Parameters.AddWithValue("last_name", model.LastName);
+            cmd.Parameters.AddWithValue("phone", model.Phone);
+            cmd.Parameters.AddWithValue("photo", model.Photo);
+            cmd.Parameters.AddWithValue("benefit_id", model.BenefitId);
+            cmd.Parameters.AddWithValue("social_status_id", model.SocialStatusId);
+
+            await cmd.ExecuteNonQueryAsync();
         }
     }
 }

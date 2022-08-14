@@ -52,7 +52,6 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
             });
         }
 
-        public Action CloseWindow { get; set; }
         public ObservableCollection<AtcModel> Atces { get; set; }
         public AtcModel SelectedAtc { get; set; }
         public IDelegateCommand CreateCommand => new DelegateCommand(() => { new CreateAtcWindow().Show(); });

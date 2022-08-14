@@ -12,7 +12,9 @@ namespace ATC.Wpf.Repositories
         {
         }
 
-        protected override string SelectQuery => throw new System.NotImplementedException();
+        protected override string SelectQuery => "SELECT b.id AS id, benefit_type_id, bt.name AS benefit_type_name, conditions, tariff " +
+            "FROM benefits b " +
+            "JOIN benefit_types bt ON bt.id = b.benefit_type_id";
 
         protected override async Task OnCreate(Benefit model)
         {

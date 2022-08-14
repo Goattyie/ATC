@@ -4,10 +4,13 @@ using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.ViewModels;
+using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.Views.Tables;
+using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Call;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using System;
@@ -69,6 +72,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<CallPageViewModel>();
             services.AddTransient<CreateCallWindowViewModel>();
             services.AddTransient<UpdateCallWindowViewModel>();
+            services.AddTransient<AbonentPageViewModel>();
+            services.AddTransient<CreateAbonentWindowViewModel>();
+            services.AddTransient<UpdateAbonentWindowViewModel>();
 
             #endregion
 
@@ -76,6 +82,7 @@ namespace ATC.Wpf.DI
 
             services.AddTransient<ITablePage, AtcPage>();
             services.AddTransient<ITablePage, CallPage>();
+            services.AddTransient<ITablePage, AbonentPage>();
 
             #endregion
 

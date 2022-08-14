@@ -48,8 +48,8 @@ namespace ATC.Wpf.ViewModels.Tables.Call
         public AtcModel SelectedAtc { get; set; }
         public ObservableCollection<City> Cities { get; set; }
         public City SelectedCity { get; set; }
-        public ObservableCollection<Abonent> Abonents { get; set; }
-        public Abonent SelectedAbonent { get; set; }
+        public ObservableCollection<AbonentModel> Abonents { get; set; }
+        public AbonentModel SelectedAbonent { get; set; }
         public ObservableCollection<Tariff> Tariffs { get; set; }
         public Tariff SelectedTariff { get; set; }
         

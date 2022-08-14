@@ -23,13 +23,13 @@ namespace ATC.Wpf.ViewModels
         {
             if (Login != LOGIN)
             {
-                MessageBoxManager.ShowError(Errors.WrongLogin);
+                MessageBoxManager.ShowError(Res.WrongLogin);
                 return;
             }
 
             if(Password != PASSWORD)
             {
-                MessageBoxManager.ShowError(Errors.WrongPassword);
+                MessageBoxManager.ShowError(Res.WrongPassword);
                 return;
             }
 

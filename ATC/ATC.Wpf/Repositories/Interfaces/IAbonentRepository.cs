@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface IAbonentRepository : IRepository<Abonent>
+    internal interface IAbonentRepository : IRepository<AbonentModel>
     {
     }
 }

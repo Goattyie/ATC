@@ -8,7 +8,7 @@ namespace ATC.Wpf.Services.DataGenerators
 {
     internal class BenefitGenerator : AbstractGenerator<Benefit>
     {
-        public static int Count = 10000;
+        public static int Count = 10;
 
         public BenefitGenerator(IBenefitRepository repository, NpgsqlConnection connection) : base(repository, connection) { }
 

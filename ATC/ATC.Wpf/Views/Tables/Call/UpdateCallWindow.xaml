@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Call"
         mc:Ignorable="d"
-        Title="UpdateCallWindow" Height="400" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UpdateCallWindowViewModel}">
+        Title="Обновить вызов" Height="400" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UpdateCallWindowViewModel}">
 
     <Window.Resources>
         <ResourceDictionary Source="../../../Styles.xaml"/>

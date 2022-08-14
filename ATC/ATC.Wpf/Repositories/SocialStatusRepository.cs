@@ -12,7 +12,7 @@ namespace ATC.Wpf.Repositories
         {
         }
 
-        protected override string SelectQuery => throw new System.NotImplementedException();
+        protected override string SelectQuery => "SELECT * FROM social_statuses";
 
         protected override async Task OnCreate(SocialStatus model)
         {

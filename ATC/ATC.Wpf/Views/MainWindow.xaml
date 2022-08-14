@@ -42,6 +42,8 @@
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
                             Content="Абоненты"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="abonent"
                             Style="{StaticResource MenuBtnStyle}"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"
