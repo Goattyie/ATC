@@ -4,6 +4,7 @@ using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
+using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
 
 namespace ATC.Wpf.Services
@@ -27,5 +28,8 @@ namespace ATC.Wpf.Services
         public CountryPageViewModel CountryPageViewModel => IoC.Resolve<CountryPageViewModel>();
         public CreateCountryWindowViewModel CreateCountryWindowViewModel => IoC.Resolve<CreateCountryWindowViewModel>();
         public UpdateCountryWindowViewModel UpdateCountryWindowViewModel => IoC.Resolve<UpdateCountryWindowViewModel>();
+        public CityPageViewModel CityPageViewModel => IoC.Resolve<CityPageViewModel>();
+        public CreateCityWindowViewModel CreateCityWindowViewModel => IoC.Resolve<CreateCityWindowViewModel>();
+        public UpdateCityWindowViewModel UpdateCityWindowViewModel => IoC.Resolve<UpdateCityWindowViewModel>();
     }
 }

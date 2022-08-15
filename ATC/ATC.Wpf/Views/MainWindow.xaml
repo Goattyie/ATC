@@ -63,7 +63,9 @@
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
                             Content="Города"
-                            Style="{StaticResource MenuBtnStyle}"/>
+                            Style="{StaticResource MenuBtnStyle}"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="city"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"

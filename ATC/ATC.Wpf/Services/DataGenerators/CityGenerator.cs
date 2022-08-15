@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class CityGenerator : AbstractGenerator<City>
+    internal class CityGenerator : AbstractGenerator<CityModel>
     {
         public static int Count = 8;
 
@@ -26,14 +26,14 @@ namespace ATC.Wpf.Services.DataGenerators
 
         protected override async Task GenerateData()
         {
-            await Repository.Create(new City { Name = "Таганрог", CountryId = 1 });
-            await Repository.Create(new City { Name = "Ростов-На-Дону", CountryId = 1 });
-            await Repository.Create(new City { Name = "Краснодар", CountryId = 1 });
-            await Repository.Create(new City { Name = "Москва", CountryId = 1 });
-            await Repository.Create(new City { Name = "Киев", CountryId = 2 });
-            await Repository.Create(new City { Name = "Харьков", CountryId = 2 });
-            await Repository.Create(new City { Name = "Херсон", CountryId = 2 });
-            await Repository.Create(new City { Name = "Минск", CountryId = 3 });
+            await Repository.Create(new CityModel { Name = "Таганрог", CountryId = 1 });
+            await Repository.Create(new CityModel { Name = "Ростов-На-Дону", CountryId = 1 });
+            await Repository.Create(new CityModel { Name = "Краснодар", CountryId = 1 });
+            await Repository.Create(new CityModel { Name = "Москва", CountryId = 1 });
+            await Repository.Create(new CityModel { Name = "Киев", CountryId = 2 });
+            await Repository.Create(new CityModel { Name = "Харьков", CountryId = 2 });
+            await Repository.Create(new CityModel { Name = "Херсон", CountryId = 2 });
+            await Repository.Create(new CityModel { Name = "Минск", CountryId = 3 });
         }
     }
 }

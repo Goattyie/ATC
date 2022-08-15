@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface ICityRepository : IRepository<City>
+    internal interface ICityRepository : IRepository<CityModel>
     {
     }
 }

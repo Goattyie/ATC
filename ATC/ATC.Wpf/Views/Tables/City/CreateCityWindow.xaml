@@ -1,12 +1,13 @@
-﻿<Window x:Class="ATC.Wpf.Views.Tables.Country.CreateCountryWindow"
-        Name="CountryCreateWindow"
+﻿<Window x:Class="ATC.Wpf.Views.Tables.City.CreateCityWindow"
+        Name="CityCreateWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Country"
+        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.City"
         mc:Ignorable="d"
-        Title="Добавление страны" Height="200" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=CreateCountryWindowViewModel}">
+        Title="Добавление города" Height="300" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=CreateCityWindowViewModel}">
+    
     <Window.Resources>
         <ResourceDictionary Source="../../../Styles.xaml"/>
     </Window.Resources>
@@ -15,19 +16,27 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBox Style="{StaticResource TextBoxWithWatermark}"
-                 Tag="Страна"
+                 Tag="Город"
                  MaxHeight="30"
-                 Text="{Binding Country.Name}"/>
+                 Text="{Binding City.Name}"/>
 
-        <Button Grid.Row="1"
+        <ComboBox Grid.Row="1"
+                  Style="{StaticResource UsualComboBox}"
+                  MaxHeight="30"
+                  DisplayMemberPath="Name"
+                  ItemsSource="{Binding Countries}"
+                  SelectedItem="{Binding SelectedCountry}"/>
+
+        <Button Grid.Row="2"
                 Style="{StaticResource UsualBtnStyle}"
                 MaxHeight="30"
                 Content="Добавить"
                 Command="{Binding CreateCommand}"
-                CommandParameter="{Binding ElementName=CountryCreateWindow}"/>
+                CommandParameter="{Binding ElementName=CityCreateWindow}"/>
 
     </Grid>
 </Window>

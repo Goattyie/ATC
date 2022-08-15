@@ -8,11 +8,13 @@ using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
+using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Benefit;
 using ATC.Wpf.Views.Tables.Call;
+using ATC.Wpf.Views.Tables.City;
 using ATC.Wpf.Views.Tables.Country;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -85,6 +87,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<CountryPageViewModel>();
             services.AddTransient<CreateCountryWindowViewModel>();
             services.AddTransient<UpdateCountryWindowViewModel>();
+            services.AddTransient<CityPageViewModel>();
+            services.AddTransient<CreateCityWindowViewModel>();
+            services.AddTransient<UpdateCityWindowViewModel>();
 
             #endregion
 
@@ -95,6 +100,7 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, AbonentPage>();
             services.AddTransient<ITablePage, BenefitPage>();
             services.AddTransient<ITablePage, CountryPage>();
+            services.AddTransient<ITablePage, CityPage>();
 
             #endregion
 
