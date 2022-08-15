@@ -55,12 +55,14 @@
                     <Button Height="30"
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
-                            Content="Города"
-                            Style="{StaticResource MenuBtnStyle}"/>
+                            Content="Страны"
+                            Style="{StaticResource MenuBtnStyle}"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="country"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
-                            Content="Страны"
+                            Content="Города"
                             Style="{StaticResource MenuBtnStyle}"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"

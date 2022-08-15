@@ -6,6 +6,7 @@ using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Benefit;
 using ATC.Wpf.Views.Tables.Call;
+using ATC.Wpf.Views.Tables.Country;
 using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace ATC.Wpf.ViewModels
                 case "call": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CallPage)); break;
                 case "abonent": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AbonentPage)); break;
                 case "benefit": CurrentPage = _tablePages.First(x => x.GetType() == typeof(BenefitPage)); break;
+                case "country": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CountryPage)); break;
             }
         });
 

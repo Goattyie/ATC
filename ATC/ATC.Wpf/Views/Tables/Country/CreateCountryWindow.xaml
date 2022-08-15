@@ -1,0 +1,33 @@
+﻿<Window x:Class="ATC.Wpf.Views.Tables.Country.CreateCountryWindow"
+        Name="CountryCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Country"
+        mc:Ignorable="d"
+        Title="Добавление страны" Height="200" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=CreateCountryWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Страна"
+                 MaxHeight="30"
+                 Text="{Binding Country.Name}"/>
+
+        <Button Grid.Row="1"
+                Style="{StaticResource UsualBtnStyle}"
+                MaxHeight="30"
+                Content="Добавить"
+                Command="{Binding CreateCommand}"
+                CommandParameter="{Binding ElementName=CountryCreateWindow}"/>
+
+    </Grid>
+</Window>

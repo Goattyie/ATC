@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class CountryGenerator : AbstractGenerator<Country>
+    internal class CountryGenerator : AbstractGenerator<CountryModel>
     {
         public CountryGenerator(ICountryRepository repository, NpgsqlConnection connection)
             : base(repository, connection) { }
@@ -25,9 +25,9 @@ namespace ATC.Wpf.Services.DataGenerators
 
         protected override async Task GenerateData()
         {
-            await Repository.Create(new Country { Name = "Россия" });
-            await Repository.Create(new Country { Name = "Украина" });
-            await Repository.Create(new Country { Name = "Беларусь" });
+            await Repository.Create(new CountryModel { Name = "Россия" });
+            await Repository.Create(new CountryModel { Name = "Украина" });
+            await Repository.Create(new CountryModel { Name = "Беларусь" });
         }
     }
 }

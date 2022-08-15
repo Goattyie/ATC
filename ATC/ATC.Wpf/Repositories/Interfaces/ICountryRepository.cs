@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface ICountryRepository : IRepository<Country>
+    internal interface ICountryRepository : IRepository<CountryModel>
     {
     }
 }
