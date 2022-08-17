@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class AreaGenerator : AbstractGenerator<Area>
+    internal class AreaGenerator : AbstractGenerator<AreaModel>
     {
         public static int Count = 5;
 
@@ -26,11 +26,11 @@ namespace ATC.Wpf.Services.DataGenerators
 
         protected override async Task GenerateData()
         {
-            await Repository.Create(new Area { Name = "Ленинский", CityId = 1 });
-            await Repository.Create(new Area { Name = "Кировский", CityId = 2 });
-            await Repository.Create(new Area { Name = "Калининский", CityId = 3 });
-            await Repository.Create(new Area { Name = "Ворошиловский", CityId = 4 });
-            await Repository.Create(new Area { Name = "Петровский", CityId = 5 });
+            await Repository.Create(new AreaModel { Name = "Ленинский", CityId = 1 });
+            await Repository.Create(new AreaModel { Name = "Кировский", CityId = 2 });
+            await Repository.Create(new AreaModel { Name = "Калининский", CityId = 3 });
+            await Repository.Create(new AreaModel { Name = "Ворошиловский", CityId = 4 });
+            await Repository.Create(new AreaModel { Name = "Петровский", CityId = 5 });
         }
     }
 }

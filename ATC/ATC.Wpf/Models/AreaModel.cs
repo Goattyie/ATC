@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Models
 {
-    internal class Area : BaseModel
+    internal class AreaModel : BaseModel
     {
         [DisplayName("name")]
         public string Name { get; set; }

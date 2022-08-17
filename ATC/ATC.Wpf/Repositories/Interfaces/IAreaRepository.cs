@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface IAreaRepository : IRepository<Area>
+    internal interface IAreaRepository : IRepository<AreaModel>
     {
     }
 }

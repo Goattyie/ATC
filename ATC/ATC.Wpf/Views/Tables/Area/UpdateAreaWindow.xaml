@@ -1,0 +1,42 @@
+﻿<Window x:Class="ATC.Wpf.Views.Tables.Area.UpdateAreaWindow"
+        Name="AreaUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Area"
+        mc:Ignorable="d"
+        Title="Обновление района" Height="300" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UpdateAreaWindowViewModel}">
+
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Район"
+                 MaxHeight="30"
+                 Text="{Binding Area.Name}"/>
+
+        <ComboBox Grid.Row="1"
+                  Style="{StaticResource UsualComboBox}"
+                  MaxHeight="30"
+                  DisplayMemberPath="Name"
+                  ItemsSource="{Binding Cities}"
+                  SelectedItem="{Binding SelectedCity}"/>
+
+        <Button Grid.Row="2"
+                Style="{StaticResource UsualBtnStyle}"
+                MaxHeight="30"
+                Content="Изменить"
+                Command="{Binding UpdateCommand}"
+                CommandParameter="{Binding ElementName=AreaUpdateWindow}"/>
+
+    </Grid>
+</Window>

@@ -5,6 +5,7 @@ using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.ViewModels;
 using ATC.Wpf.ViewModels.Tables.Abonent;
+using ATC.Wpf.ViewModels.Tables.Area;
 using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
@@ -12,6 +13,7 @@ using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
+using ATC.Wpf.Views.Tables.Area;
 using ATC.Wpf.Views.Tables.Benefit;
 using ATC.Wpf.Views.Tables.Call;
 using ATC.Wpf.Views.Tables.City;
@@ -90,6 +92,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<CityPageViewModel>();
             services.AddTransient<CreateCityWindowViewModel>();
             services.AddTransient<UpdateCityWindowViewModel>();
+            services.AddTransient<AreaPageViewModel>();
+            services.AddTransient<CreateAreaWindowViewModel>();
+            services.AddTransient<UpdateAreaWindowViewModel>();
 
             #endregion
 
@@ -101,6 +106,7 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, BenefitPage>();
             services.AddTransient<ITablePage, CountryPage>();
             services.AddTransient<ITablePage, CityPage>();
+            services.AddTransient<ITablePage, AreaPage>();
 
             #endregion
 

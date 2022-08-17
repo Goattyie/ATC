@@ -1,6 +1,7 @@
 ﻿using ATC.Wpf.DI;
 using ATC.Wpf.ViewModels;
 using ATC.Wpf.ViewModels.Tables.Abonent;
+using ATC.Wpf.ViewModels.Tables.Area;
 using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
@@ -31,5 +32,8 @@ namespace ATC.Wpf.Services
         public CityPageViewModel CityPageViewModel => IoC.Resolve<CityPageViewModel>();
         public CreateCityWindowViewModel CreateCityWindowViewModel => IoC.Resolve<CreateCityWindowViewModel>();
         public UpdateCityWindowViewModel UpdateCityWindowViewModel => IoC.Resolve<UpdateCityWindowViewModel>();
+        public AreaPageViewModel AreaPageViewModel => IoC.Resolve<AreaPageViewModel>();
+        public CreateAreaWindowViewModel CreateAreaWindowViewModel => IoC.Resolve<CreateAreaWindowViewModel>();
+        public UpdateAreaWindowViewModel UpdateAreaWindowViewModel => IoC.Resolve<UpdateAreaWindowViewModel>();
     }
 }

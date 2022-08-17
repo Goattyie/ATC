@@ -30,8 +30,8 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
 
         public Action OnClose { get; set; }
         public AtcModel Atc { get; set; }
-        public ObservableCollection<Area> Areas { get; set; }
-        public Area SelectedArea { get; set; }
+        public ObservableCollection<AreaModel> Areas { get; set; }
+        public AreaModel SelectedArea { get; set; }
 
         private async Task LoadAtcModel(AtcModelMessage msg)
         {

@@ -70,7 +70,9 @@
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
                             Content="Районы"
-                            Style="{StaticResource MenuBtnStyle}"/>
+                            Style="{StaticResource MenuBtnStyle}"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="area"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
