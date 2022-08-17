@@ -50,8 +50,8 @@ namespace ATC.Wpf.ViewModels.Tables.Call
         public CityModel SelectedCity { get; set; }
         public ObservableCollection<AbonentModel> Abonents { get; set; }
         public AbonentModel SelectedAbonent { get; set; }
-        public ObservableCollection<Tariff> Tariffs { get; set; }
-        public Tariff SelectedTariff { get; set; }
+        public ObservableCollection<TariffModel> Tariffs { get; set; }
+        public TariffModel SelectedTariff { get; set; }
         
         public IAsyncCommand CreateCommand => new AsyncCommand<Window>(async (Window window) =>
         {

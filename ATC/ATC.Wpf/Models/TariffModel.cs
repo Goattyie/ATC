@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace ATC.Wpf.Models
 {
-    internal class Tariff : BaseModel
+    internal class TariffModel : BaseModel
     {
         [DisplayName("name")]
         public string Name { get; set; }

@@ -1,0 +1,54 @@
+﻿<Window x:Class="ATC.Wpf.Views.Tables.Tariff.UpdateTariffWindow"
+        Name="TariffUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATC.Wpf.Views.Tables.Tariff"
+        mc:Ignorable="d"
+        Title="Обновление тарифа" Height="400" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UpdateTariffWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Название"
+                 MaxHeight="30"
+                 Text="{Binding Tariff.Name}"/>
+
+        <TextBox Grid.Row="1" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Коэффициент"
+                 MaxHeight="30"
+                 Text="{Binding Tariff.Ratio}"/>
+
+        <TextBox Grid.Row="2" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Дата начала"
+                 MaxHeight="30"
+                 Text="{Binding Tariff.StartDate, StringFormat='dd.MM.yyyy'}"/>
+
+        <TextBox Grid.Row="3" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Дата конца"
+                 MaxHeight="30"
+                 Text="{Binding Tariff.EndDate, StringFormat='dd.MM.yyyy'}"/>
+
+        <Button Grid.Row="4"
+                Style="{StaticResource UsualBtnStyle}"
+                MaxHeight="30"
+                Content="Изменить"
+                Command="{Binding UpdateCommand}"
+                CommandParameter="{Binding ElementName=TariffUpdateWindow}"/>
+
+    </Grid>
+</Window>

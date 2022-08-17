@@ -11,6 +11,7 @@ using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
+using ATC.Wpf.ViewModels.Tables.Tariff;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Area;
@@ -18,6 +19,7 @@ using ATC.Wpf.Views.Tables.Benefit;
 using ATC.Wpf.Views.Tables.Call;
 using ATC.Wpf.Views.Tables.City;
 using ATC.Wpf.Views.Tables.Country;
+using ATC.Wpf.Views.Tables.Tariff;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
@@ -95,6 +97,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<AreaPageViewModel>();
             services.AddTransient<CreateAreaWindowViewModel>();
             services.AddTransient<UpdateAreaWindowViewModel>();
+            services.AddTransient<TariffPageViewModel>();
+            services.AddTransient<CreateTariffWindowViewModel>();
+            services.AddTransient<UpdateTariffWindowViewModel>();
 
             #endregion
 
@@ -107,6 +112,7 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, CountryPage>();
             services.AddTransient<ITablePage, CityPage>();
             services.AddTransient<ITablePage, AreaPage>();
+            services.AddTransient<ITablePage, TariffPage>();
 
             #endregion
 

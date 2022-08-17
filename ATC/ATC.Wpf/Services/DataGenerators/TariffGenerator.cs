@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class TariffGenerator : AbstractGenerator<Tariff>
+    internal class TariffGenerator : AbstractGenerator<TariffModel>
     {
         public static int Count = 4;
 
@@ -27,10 +27,10 @@ namespace ATC.Wpf.Services.DataGenerators
 
         protected override async Task GenerateData()
         {
-            await Repository.Create(new Tariff { Name = "Безлимит", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1 });
-            await Repository.Create(new Tariff { Name = "Быстрый", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1.15 });
-            await Repository.Create(new Tariff { Name = "Комфортный", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1.2 });
-            await Repository.Create(new Tariff { Name = "Эконом", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1.3 });
+            await Repository.Create(new TariffModel { Name = "Безлимит", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1 });
+            await Repository.Create(new TariffModel { Name = "Быстрый", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1.15 });
+            await Repository.Create(new TariffModel { Name = "Комфортный", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1.2 });
+            await Repository.Create(new TariffModel { Name = "Эконом", StartDate = DateTime.UtcNow.AddDays(-100), EndDate = DateTime.UtcNow.AddDays(100), Ratio = 1.3 });
         }
     }
 }

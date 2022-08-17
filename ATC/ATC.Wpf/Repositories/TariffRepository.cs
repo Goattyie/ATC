@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Repositories
 {
-    internal class TariffRepository : AbstractRepository<Tariff>, ITariffRepository
+    internal class TariffRepository : AbstractRepository<TariffModel>, ITariffRepository
     {
         public TariffRepository(NpgsqlConnection connection) : base(connection)
         {
@@ -14,7 +14,7 @@ namespace ATC.Wpf.Repositories
 
         protected override string SelectQuery => "SELECT * FROM tariffs";
 
-        protected override async Task OnCreate(Tariff model)
+        protected override async Task OnCreate(TariffModel model)
         {
             await using var cmd = new NpgsqlCommand("INSERT INTO tariffs (name, start_date, end_date, ratio) VALUES (@name, @start_date, @end_date, @ratio)", Connection);
 
@@ -32,14 +32,27 @@ namespace ATC.Wpf.Repositories
             model.Id = reader.GetInt32(0);
         }
 
-        protected override Task OnDelete(int id)
+        protected override async Task OnDelete(int id)
         {
-            throw new System.NotImplementedException();
+            await using var cmd = new NpgsqlCommand("DELETE FROM tariffs WHERE id = @id ", Connection);
+
+            cmd.Parameters.AddWithValue("id", id);
+
+            await cmd.ExecuteNonQueryAsync();
         }
 
-        protected override Task OnUpdate(Tariff model)
+        protected override async Task OnUpdate(TariffModel model)
         {
-            throw new System.NotImplementedException();
+            await using var cmd = new NpgsqlCommand("UPDATE tariffs SET name = @name, ratio = @ratio, start_date = @start_date, end_date = @end_date " +
+                "WHERE id = @id; ", Connection);
+
+            cmd.Parameters.AddWithValue("id", model.Id);
+            cmd.Parameters.AddWithValue("name", model.Name);
+            cmd.Parameters.AddWithValue("ratio", model.Ratio);
+            cmd.Parameters.AddWithValue("start_date", model.StartDate);
+            cmd.Parameters.AddWithValue("end_date", model.EndDate);
+
+            await cmd.ExecuteNonQueryAsync();
         }
     }
 }
