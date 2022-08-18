@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class BenefitTypeGenerator : AbstractGenerator<BenefitType>
+    internal class BenefitTypeGenerator : AbstractGenerator<BenefitTypeModel>
     {
         public static int Count = 7;
 
@@ -26,13 +26,13 @@ namespace ATC.Wpf.Services.DataGenerators
 
         protected override async Task GenerateData()
         {
-            await Repository.Create(new BenefitType { Name = "Обычный" });
-            await Repository.Create(new BenefitType { Name = "Экстра" });
-            await Repository.Create(new BenefitType { Name = "Высочайший" });
-            await Repository.Create(new BenefitType { Name = "Удобный" });
-            await Repository.Create(new BenefitType { Name = "Скромный" });
-            await Repository.Create(new BenefitType { Name = "VIP" });
-            await Repository.Create(new BenefitType { Name = "Лучший" });
+            await Repository.Create(new BenefitTypeModel { Name = "Обычный" });
+            await Repository.Create(new BenefitTypeModel { Name = "Экстра" });
+            await Repository.Create(new BenefitTypeModel { Name = "Высочайший" });
+            await Repository.Create(new BenefitTypeModel { Name = "Удобный" });
+            await Repository.Create(new BenefitTypeModel { Name = "Скромный" });
+            await Repository.Create(new BenefitTypeModel { Name = "VIP" });
+            await Repository.Create(new BenefitTypeModel { Name = "Лучший" });
         }
     }
 }

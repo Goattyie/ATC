@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface IBenefitTypeRepository : IRepository<BenefitType>
+    internal interface IBenefitTypeRepository : IRepository<BenefitTypeModel>
     {
     }
 }

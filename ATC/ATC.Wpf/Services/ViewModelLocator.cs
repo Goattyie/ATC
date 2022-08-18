@@ -4,6 +4,7 @@ using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Area;
 using ATC.Wpf.ViewModels.Tables.Atc;
 using ATC.Wpf.ViewModels.Tables.Benefit;
+using ATC.Wpf.ViewModels.Tables.BenefitType;
 using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
@@ -43,5 +44,8 @@ namespace ATC.Wpf.Services
         public SocialStatusPageViewModel SocialStatusPageViewModel => IoC.Resolve<SocialStatusPageViewModel>();
         public CreateSocialStatusWindowViewModel CreateSocialStatusWindowViewModel => IoC.Resolve<CreateSocialStatusWindowViewModel>();
         public UpdateSocialStatusWindowViewModel UpdateSocialStatusWindowViewModel => IoC.Resolve<UpdateSocialStatusWindowViewModel>();
+        public BenefitTypePageViewModel BenefitTypePageViewModel => IoC.Resolve<BenefitTypePageViewModel>();
+        public CreateBenefitTypeWindowViewModel CreateBenefitTypeWindowViewModel => IoC.Resolve<CreateBenefitTypeWindowViewModel>();
+        public UpdateBenefitTypeWindowViewModel UpdateBenefitTypeWindowViewModel => IoC.Resolve<UpdateBenefitTypeWindowViewModel>();
     }
 }

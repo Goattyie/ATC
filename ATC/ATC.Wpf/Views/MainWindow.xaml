@@ -91,7 +91,9 @@
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
                             Content="Типы льгот"
-                            Style="{StaticResource MenuBtnStyle}"/>
+                            Style="{StaticResource MenuBtnStyle}"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="benefittype"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
                     <Button Height="30"

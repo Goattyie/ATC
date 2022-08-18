@@ -6,6 +6,7 @@ using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Area;
 using ATC.Wpf.Views.Tables.Benefit;
+using ATC.Wpf.Views.Tables.BenefitType;
 using ATC.Wpf.Views.Tables.Call;
 using ATC.Wpf.Views.Tables.City;
 using ATC.Wpf.Views.Tables.Country;
@@ -45,6 +46,7 @@ namespace ATC.Wpf.ViewModels
                 case "area": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AreaPage)); break;
                 case "tariff": CurrentPage = _tablePages.First(x => x.GetType() == typeof(TariffPage)); break;
                 case "socialstatus": CurrentPage = _tablePages.First(x => x.GetType() == typeof(SocialStatusPage)); break;
+                case "benefittype": CurrentPage = _tablePages.First(x => x.GetType() == typeof(BenefitTypePage)); break;
             }
         });
 

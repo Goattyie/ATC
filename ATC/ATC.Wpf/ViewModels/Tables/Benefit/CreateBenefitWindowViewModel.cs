@@ -31,8 +31,8 @@ namespace ATC.Wpf.ViewModels.Tables.Benefit
         }
 
         public BenefitModel Benefit { get; set; }
-        public ObservableCollection<BenefitType> BenefitTypes { get; set; }
-        public BenefitType SelectedBenefitType { get; set; }
+        public ObservableCollection<BenefitTypeModel> BenefitTypes { get; set; }
+        public BenefitTypeModel SelectedBenefitType { get; set; }
         public IAsyncCommand CreateCommand => new AsyncCommand<Window>(async (Window window) =>
         {
             Benefit.BenefitTypeId = SelectedBenefitType?.Id ?? 0;
