@@ -7,6 +7,7 @@ using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
+using ATC.Wpf.ViewModels.Tables.SocialStatus;
 using ATC.Wpf.ViewModels.Tables.Tariff;
 
 namespace ATC.Wpf.Services
@@ -39,5 +40,8 @@ namespace ATC.Wpf.Services
         public TariffPageViewModel TariffPageViewModel => IoC.Resolve<TariffPageViewModel>();
         public CreateTariffWindowViewModel CreateTariffWindowViewModel => IoC.Resolve<CreateTariffWindowViewModel>();
         public UpdateTariffWindowViewModel UpdateTariffWindowViewModel => IoC.Resolve<UpdateTariffWindowViewModel>();
+        public SocialStatusPageViewModel SocialStatusPageViewModel => IoC.Resolve<SocialStatusPageViewModel>();
+        public CreateSocialStatusWindowViewModel CreateSocialStatusWindowViewModel => IoC.Resolve<CreateSocialStatusWindowViewModel>();
+        public UpdateSocialStatusWindowViewModel UpdateSocialStatusWindowViewModel => IoC.Resolve<UpdateSocialStatusWindowViewModel>();
     }
 }

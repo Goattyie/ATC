@@ -46,8 +46,8 @@ namespace ATC.Wpf.ViewModels.Tables.Abonent
         public AbonentModel Abonent { get; set; }
         public ObservableCollection<BenefitModel> Benefits { get; set; }
         public BenefitModel SelectedBenefit { get; set; }
-        public ObservableCollection<SocialStatus> SocialStatuses { get; set; }
-        public SocialStatus SelectedSocialStatus { get; set; }
+        public ObservableCollection<SocialStatusModel> SocialStatuses { get; set; }
+        public SocialStatusModel SelectedSocialStatus { get; set; }
         public IDelegateCommand LoadPhoto => new DelegateCommand(() =>
         {
             var fileDialog = new OpenFileDialog();

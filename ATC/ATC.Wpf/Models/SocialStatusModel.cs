@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Models
 {
-    internal class SocialStatus : BaseModel
+    internal class SocialStatusModel : BaseModel
     {
         [DisplayName("name")]
         public string Name { get; set; }

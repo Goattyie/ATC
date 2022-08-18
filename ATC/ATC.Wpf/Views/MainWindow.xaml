@@ -84,7 +84,9 @@
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
                             Content="Соц. положения"
-                            Style="{StaticResource MenuBtnStyle}"/>
+                            Style="{StaticResource MenuBtnStyle}"
+                            Command="{Binding SelectTablePage}"
+                            CommandParameter="socialstatus"/>
                     <Button Height="30"
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"

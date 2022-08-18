@@ -11,6 +11,7 @@ using ATC.Wpf.ViewModels.Tables.Benefit;
 using ATC.Wpf.ViewModels.Tables.Call;
 using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
+using ATC.Wpf.ViewModels.Tables.SocialStatus;
 using ATC.Wpf.ViewModels.Tables.Tariff;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
@@ -19,6 +20,7 @@ using ATC.Wpf.Views.Tables.Benefit;
 using ATC.Wpf.Views.Tables.Call;
 using ATC.Wpf.Views.Tables.City;
 using ATC.Wpf.Views.Tables.Country;
+using ATC.Wpf.Views.Tables.SocialStatus;
 using ATC.Wpf.Views.Tables.Tariff;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -100,6 +102,9 @@ namespace ATC.Wpf.DI
             services.AddTransient<TariffPageViewModel>();
             services.AddTransient<CreateTariffWindowViewModel>();
             services.AddTransient<UpdateTariffWindowViewModel>();
+            services.AddTransient<SocialStatusPageViewModel>();
+            services.AddTransient<CreateSocialStatusWindowViewModel>();
+            services.AddTransient<UpdateSocialStatusWindowViewModel>();
 
             #endregion
 
@@ -113,6 +118,7 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, CityPage>();
             services.AddTransient<ITablePage, AreaPage>();
             services.AddTransient<ITablePage, TariffPage>();
+            services.AddTransient<ITablePage, SocialStatusPage>();
 
             #endregion
 

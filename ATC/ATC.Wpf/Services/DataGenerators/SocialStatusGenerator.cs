@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services.DataGenerators
 {
-    internal class SocialStatusGenerator : AbstractGenerator<SocialStatus>
+    internal class SocialStatusGenerator : AbstractGenerator<SocialStatusModel>
     {
         public static int Count = 16;
 
@@ -26,22 +26,22 @@ namespace ATC.Wpf.Services.DataGenerators
 
         protected override async Task GenerateData()
         {
-            await Repository.Create(new SocialStatus { Name = "Попрошайка" });
-            await Repository.Create(new SocialStatus { Name = "Таксист" });
-            await Repository.Create(new SocialStatus { Name = "Безработный" });
-            await Repository.Create(new SocialStatus { Name = "Врач" });
-            await Repository.Create(new SocialStatus { Name = "Охранник" });
-            await Repository.Create(new SocialStatus { Name = "Бизнесмен" });
-            await Repository.Create(new SocialStatus { Name = "Военный" });
-            await Repository.Create(new SocialStatus { Name = "Полицейский" });
-            await Repository.Create(new SocialStatus { Name = "Слесарь" });
-            await Repository.Create(new SocialStatus { Name = "Сотрудник ГАИ" });
-            await Repository.Create(new SocialStatus { Name = "Уборщик" });
-            await Repository.Create(new SocialStatus { Name = "Учитель" });
-            await Repository.Create(new SocialStatus { Name = "Секретарь" });
-            await Repository.Create(new SocialStatus { Name = "Директор фирмы" });
-            await Repository.Create(new SocialStatus { Name = "Мастер маникюра" });
-            await Repository.Create(new SocialStatus { Name = "Программист" });
+            await Repository.Create(new SocialStatusModel { Name = "Попрошайка" });
+            await Repository.Create(new SocialStatusModel { Name = "Таксист" });
+            await Repository.Create(new SocialStatusModel { Name = "Безработный" });
+            await Repository.Create(new SocialStatusModel { Name = "Врач" });
+            await Repository.Create(new SocialStatusModel { Name = "Охранник" });
+            await Repository.Create(new SocialStatusModel { Name = "Бизнесмен" });
+            await Repository.Create(new SocialStatusModel { Name = "Военный" });
+            await Repository.Create(new SocialStatusModel { Name = "Полицейский" });
+            await Repository.Create(new SocialStatusModel { Name = "Слесарь" });
+            await Repository.Create(new SocialStatusModel { Name = "Сотрудник ГАИ" });
+            await Repository.Create(new SocialStatusModel { Name = "Уборщик" });
+            await Repository.Create(new SocialStatusModel { Name = "Учитель" });
+            await Repository.Create(new SocialStatusModel { Name = "Секретарь" });
+            await Repository.Create(new SocialStatusModel { Name = "Директор фирмы" });
+            await Repository.Create(new SocialStatusModel { Name = "Мастер маникюра" });
+            await Repository.Create(new SocialStatusModel { Name = "Программист" });
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ATC.Wpf.Repositories.Interfaces
 {
-    internal interface ISocialStatusRepository : IRepository<SocialStatus>
+    internal interface ISocialStatusRepository : IRepository<SocialStatusModel>
     {
     }
 }
