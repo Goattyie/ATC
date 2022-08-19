@@ -3,6 +3,7 @@ using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Views.Tables.City;
 using DevExpress.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,10 +67,17 @@ namespace ATC.Wpf.ViewModels.Tables.City
         });
         public IAsyncCommand DeleteCommand => new AsyncCommand(async () =>
         {
-            while (SelectedCity != null)
+            try
             {
-                await _repository.Delete(SelectedCity.Id);
-                Cities.Remove(SelectedCity);
+                while (SelectedCity != null)
+                {
+                    await _repository.Delete(SelectedCity.Id);
+                    Cities.Remove(SelectedCity);
+                }
+            }catch(Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+                await _repository.DisposeAsync();
             }
         });
 

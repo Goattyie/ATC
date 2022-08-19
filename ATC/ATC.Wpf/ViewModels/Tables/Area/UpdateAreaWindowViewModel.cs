@@ -59,7 +59,12 @@ namespace ATC.Wpf.ViewModels.Tables.Area
 
         private async Task LoadData(AreaModelMessage msg)
         {
-            Area = msg.Area;
+            Area = new AreaModel 
+            { 
+                Id = msg.Area.Id, 
+                Name = msg.Area.Name, 
+                CityId = msg.Area.CityId 
+            };
 
             Cities.Clear();
 
