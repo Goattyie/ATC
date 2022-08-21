@@ -45,8 +45,8 @@
                 <DataGridTextColumn Header="#" Width="70" MaxWidth="100" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название АТС" Width="200" MaxWidth="350" Binding="{Binding Path=AtcName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата звонка" Width="200" MaxWidth="250"  Binding="{Binding Path=CallDate, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
-                <DataGridTextColumn Header="От кого" Width="200" MaxWidth="350"  Binding="{Binding Path=Phone}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кому" Width="200" Binding="{Binding Path=AbonentPhone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кому" Width="200" MaxWidth="350"  Binding="{Binding Path=Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="От кого" Width="200" Binding="{Binding Path=AbonentPhone}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Время" Width="100" Binding="{Binding Path=Time}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Город" Width="*" Binding="{Binding Path=CityName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Тариф" Width="*" Binding="{Binding Path=TariffName}"></DataGridTextColumn>
