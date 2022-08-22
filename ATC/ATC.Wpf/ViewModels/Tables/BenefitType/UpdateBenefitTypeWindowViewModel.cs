@@ -23,9 +23,9 @@ namespace ATC.Wpf.ViewModels.Tables.BenefitType
 
             BenefitType = new();
 
-            messageBus.Recieve<BenefitTypeMessage>(this, (msg) =>
+            messageBus.Recieve<AbstractModelMessage<BenefitTypeModel>>(this, (msg) =>
             {
-                BenefitType = msg.BenefitType;
+                BenefitType = msg.Model;
                 return Task.CompletedTask;
             });
         }
@@ -36,7 +36,7 @@ namespace ATC.Wpf.ViewModels.Tables.BenefitType
             try
             {
                 await _benefitTypeRepository.Update(BenefitType);
-                await _eventBus.Publish(new BenefitTypeUpdateModelEvent { BenefitType = BenefitType });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<BenefitTypeModel> { Model = BenefitType });
                 window.Close();
                 MessageBoxManager.ShowInformation("Льгота успешно обновлена.");
             }

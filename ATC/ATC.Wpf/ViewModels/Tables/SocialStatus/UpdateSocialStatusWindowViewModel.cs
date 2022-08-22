@@ -25,9 +25,9 @@ namespace ATC.Wpf.ViewModels.Tables.SocialStatus
 
             SocialStatus = new();
 
-            messageBus.Recieve<SocialStatusModelMessage>(this, (msg) =>
+            messageBus.Recieve<AbstractModelMessage<SocialStatusModel>>(this, (msg) =>
             {
-                SocialStatus = msg.SocialStatus;
+                SocialStatus = msg.Model;
                 return Task.CompletedTask;
             });
         }
@@ -39,7 +39,7 @@ namespace ATC.Wpf.ViewModels.Tables.SocialStatus
             try
             {
                 await _repository.Update(SocialStatus);
-                await _eventBus.Publish(new SocialStatusUpdateModelEvent { SocialStatus = SocialStatus });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<SocialStatusModel> { Model = SocialStatus });
                 window.Close();
                 MessageBoxManager.ShowInformation("Социальное положение успешно обновлено.");
 

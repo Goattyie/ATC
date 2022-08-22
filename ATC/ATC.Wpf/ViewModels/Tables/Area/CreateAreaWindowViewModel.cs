@@ -42,7 +42,7 @@ namespace ATC.Wpf.ViewModels.Tables.Area
             try
             {
                 await _areaRepository.Create(Area);
-                await _eventBus.Publish(new AreaNewModelEvent { Area = Area });
+                await _eventBus.Publish(new AbstractNewModelEvent<AreaModel> { Model = Area });
                 window.Close();
                 MessageBoxManager.ShowInformation("Район успешно добавлен.");
 

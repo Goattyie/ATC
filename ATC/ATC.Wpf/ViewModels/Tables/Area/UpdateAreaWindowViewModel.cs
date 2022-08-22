@@ -30,7 +30,7 @@ namespace ATC.Wpf.ViewModels.Tables.Area
             Area = new();
             Cities = new();
 
-            messageBus.Recieve<AreaModelMessage>(this, LoadData);
+            messageBus.Recieve<AbstractModelMessage<AreaModel>>(this, LoadData);
         }
 
         public AreaModel Area { get; set; }
@@ -45,7 +45,7 @@ namespace ATC.Wpf.ViewModels.Tables.Area
             try
             {
                 await _areaRepository.Update(Area);
-                await _eventBus.Publish(new AreaUpdateModelEvent { Area = Area });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<AreaModel> { Model = Area });
                 window.Close();
                 MessageBoxManager.ShowInformation("Район успешно обновлен.");
 
@@ -57,13 +57,13 @@ namespace ATC.Wpf.ViewModels.Tables.Area
             }
         });
 
-        private async Task LoadData(AreaModelMessage msg)
+        private async Task LoadData(AbstractModelMessage<AreaModel> msg)
         {
             Area = new AreaModel 
             { 
-                Id = msg.Area.Id, 
-                Name = msg.Area.Name, 
-                CityId = msg.Area.CityId 
+                Id = msg.Model.Id, 
+                Name = msg.Model.Name, 
+                CityId = msg.Model.CityId 
             };
 
             Cities.Clear();

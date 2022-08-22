@@ -28,7 +28,7 @@ namespace ATC.Wpf.ViewModels.Tables.Benefit
             Benefit = new();
             BenefitTypes = new();
 
-            messageBus.Recieve<BenefitModelMessage>(this, LoadData);
+            messageBus.Recieve<AbstractModelMessage<BenefitModel>>(this, LoadData);
         }
 
         public BenefitModel Benefit { get; set; }
@@ -42,7 +42,7 @@ namespace ATC.Wpf.ViewModels.Tables.Benefit
             try
             {
                 await _benefitRepository.Update(Benefit);
-                await _eventBus.Publish(new BenefitUpdateModelEvent { Benefit = Benefit });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<BenefitModel> { Model = Benefit });
                 window.Close();
                 MessageBoxManager.ShowInformation("Льгота успешно обновлена.");
             }
@@ -53,9 +53,9 @@ namespace ATC.Wpf.ViewModels.Tables.Benefit
             }
         });
 
-        private async Task LoadData(BenefitModelMessage msg)
+        private async Task LoadData(AbstractModelMessage<BenefitModel> msg)
         {
-            Benefit = msg.Benefit;
+            Benefit = msg.Model;
 
             BenefitTypes.Clear();
 

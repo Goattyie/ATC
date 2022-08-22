@@ -76,7 +76,7 @@ namespace ATC.Wpf.ViewModels.Tables.Abonent
             try
             {
                 await _abonentRepository.Create(Abonent);
-                await _eventBus.Publish(new AbonentNewModelEvent { Abonent = Abonent });
+                await _eventBus.Publish(new AbstractNewModelEvent<AbonentModel> { Model = Abonent });
                 window.Close();
                 MessageBoxManager.ShowInformation("Абонент успешно добавлен.");
             }

@@ -32,7 +32,7 @@ namespace ATC.Wpf.ViewModels.Tables.Tariff
             try
             {
                 await _tariffRepository.Create(Tariff);
-                await _eventBus.Publish(new TariffNewModelEvent { Tariff = Tariff });
+                await _eventBus.Publish(new AbstractNewModelEvent<TariffModel> { Model = Tariff });
                 window.Close();
                 MessageBoxManager.ShowInformation("Тариф успешно добавлен.");
 

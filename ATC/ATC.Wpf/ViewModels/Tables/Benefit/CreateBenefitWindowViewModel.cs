@@ -41,7 +41,7 @@ namespace ATC.Wpf.ViewModels.Tables.Benefit
             try
             {
                 await _benefitRepository.Create(Benefit);
-                await _eventBus.Publish(new BenefitNewModelEvent { Benefit = Benefit });
+                await _eventBus.Publish(new AbstractNewModelEvent<BenefitModel> { Model = Benefit });
                 window.Close();
                 MessageBoxManager.ShowInformation("Льгота успешно добавлена.");
             }

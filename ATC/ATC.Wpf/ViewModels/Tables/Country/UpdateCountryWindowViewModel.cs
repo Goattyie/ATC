@@ -21,9 +21,9 @@ namespace ATC.Wpf.ViewModels.Tables.Country
 
             Country = new();
 
-            messageBus.Recieve<CountryModelMessage>(this, (msg) =>
+            messageBus.Recieve<AbstractModelMessage<CountryModel>>(this, (msg) =>
             {
-                Country = msg.Country;
+                Country = msg.Model;
                 return Task.CompletedTask;
             });
         }
@@ -35,7 +35,7 @@ namespace ATC.Wpf.ViewModels.Tables.Country
             try
             {
                 await _repository.Update(Country);
-                await _eventBus.Publish(new CountryUpdateModelEvent { Country = Country });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<CountryModel> { Model = Country });
                 window.Close();
                 MessageBoxManager.ShowInformation("Страна успешно обновлена.");
 

@@ -30,7 +30,7 @@ namespace ATC.Wpf.ViewModels.Tables.City
             City = new();
             Countries = new();
 
-            messageBus.Recieve<CityModelMessage>(this, LoadData);
+            messageBus.Recieve<AbstractModelMessage<CityModel>>(this, LoadData);
         }
 
         public CityModel City { get; set; }
@@ -45,7 +45,7 @@ namespace ATC.Wpf.ViewModels.Tables.City
             try
             {
                 await _cityRepository.Update(City);
-                await _eventBus.Publish(new CityUpdateModelEvent { City = City });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<CityModel> { Model = City });
                 window.Close();
                 MessageBoxManager.ShowInformation("Город успешно обновлен.");
 
@@ -57,9 +57,9 @@ namespace ATC.Wpf.ViewModels.Tables.City
             }
         });
 
-        private async Task LoadData(CityModelMessage msg)
+        private async Task LoadData(AbstractModelMessage<CityModel> msg)
         {
-            City = msg.City;
+            City = msg.Model;
 
             Countries.Clear();
 

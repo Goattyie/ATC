@@ -67,7 +67,7 @@ namespace ATC.Wpf.ViewModels.Tables.Call
             try
             {
                 await _callRepository.Create(Call);
-                await _eventBus.Publish(new CallNewModelEvent { Call = Call });
+                await _eventBus.Publish(new AbstractNewModelEvent<CallModel> { Model = Call });
                 window.Close();
                 MessageBoxManager.ShowInformation("Вызов успешно добавлен.");
 

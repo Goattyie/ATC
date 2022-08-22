@@ -37,7 +37,7 @@ namespace ATC.Wpf.ViewModels.Tables.Abonent
             Benefits = new();
             SocialStatuses = new();
 
-            messageBus.Recieve<AbonentModelMessage>(this, LoadData);
+            messageBus.Recieve<AbstractModelMessage<AbonentModel>>(this, LoadData);
         }
 
         public ImageSource ImageSource { get; set; }
@@ -74,7 +74,7 @@ namespace ATC.Wpf.ViewModels.Tables.Abonent
             try
             {
                 await _abonentRepository.Update(Abonent);
-                await _eventBus.Publish(new AbonentUpdateModelEvent { Abonent = Abonent });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<AbonentModel> { Model = Abonent });
                 window.Close();
                 MessageBoxManager.ShowInformation("Абонент успешно обновлен.");
             }
@@ -98,9 +98,9 @@ namespace ATC.Wpf.ViewModels.Tables.Abonent
             ImageSource = decoder.Frames[0];
         }
 
-        private async Task LoadData(AbonentModelMessage msg)
+        private async Task LoadData(AbstractModelMessage<AbonentModel> msg)
         {
-            Abonent = msg.Abonent;
+            Abonent = msg.Model;
 
             Benefits.Clear();
             SocialStatuses.Clear();

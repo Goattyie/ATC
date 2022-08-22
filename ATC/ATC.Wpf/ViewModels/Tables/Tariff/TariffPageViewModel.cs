@@ -2,85 +2,32 @@
 using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Views.Tables.Tariff;
-using DevExpress.Mvvm;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ATC.Wpf.ViewModels.Tables.Tariff
 {
-    internal class TariffModelMessage : IMessage
+    internal class TariffPageViewModel : AbstractTablePageViewModel<CreateTariffWindow, UpdateTariffWindow, TariffModel, UpdateTariffWindowViewModel>
     {
-        public TariffModel Tariff { get; set; }
-    }
-
-    internal class TariffNewModelEvent : IEvent
-    {
-        public TariffModel Tariff { get; set; }
-    }
-
-    internal class TariffUpdateModelEvent : IEvent
-    {
-        public TariffModel Tariff { get; set; }
-    }
-
-    internal class TariffPageViewModel : BindableBase
-    {
-        private readonly ITariffRepository _repository;
-        private readonly MessageBus _messageBus;
-
-        public ObservableCollection<TariffModel> Tariffs { get; }
-        public TariffModel SelectedTariff { get; set; }
-
-        public TariffPageViewModel(ITariffRepository repository, MessageBus messageBus, EventBus eventBus)
+        public TariffPageViewModel(ITariffRepository repository, MessageBus messageBus, EventBus eventBus) : base(repository, messageBus, eventBus)
         {
-            _repository = repository;
-            _messageBus = messageBus;
-
-            Tariffs = new ObservableCollection<TariffModel>();
-
-            LoadData();
-
-            eventBus.Subscribe<TariffNewModelEvent>((@event) => { Tariffs.Add(@event.Tariff); return Task.CompletedTask; });
-            eventBus.Subscribe<TariffUpdateModelEvent>((@event) =>
-            {
-                var oldValue = Tariffs.First(x => x.Id == @event.Tariff.Id);
-                var index = Tariffs.IndexOf(oldValue);
-
-                Tariffs.Remove(oldValue);
-                Tariffs.Insert(index, @event.Tariff);
-
-                return Task.CompletedTask;
-            });
         }
 
-        public IDelegateCommand CreateCommand => new DelegateCommand(() => { new CreateTariffWindow().Show(); });
-        public IAsyncCommand UpdateCommand => new AsyncCommand(async () =>
+        public override List<string> Filters { get; set; } = new List<string>
         {
-            if (SelectedTariff is null)
-                return;
+            "Название",
+            "Дата начала",
+            "Дата конца",
+            "Коэффициент"
+        };
 
-            new UpdateTariffWindow().Show();
-
-            await _messageBus.SendTo<UpdateTariffWindowViewModel>(new TariffModelMessage { Tariff = SelectedTariff });
-        });
-        public IAsyncCommand DeleteCommand => new AsyncCommand(async () =>
+        protected override IEnumerable<TariffModel> FilterData(IEnumerable<TariffModel> allData) => SelectedFilter switch
         {
-            while (SelectedTariff != null)
-            {
-                await _repository.Delete(SelectedTariff.Id);
-                Tariffs.Remove(SelectedTariff);
-            }
-        });
-
-        private async Task LoadData()
-        {
-            Tariffs.Clear();
-
-            var list = await _repository.Get();
-
-            foreach (var item in list)
-                Tariffs.Add(item);
-        }
+            "Название" => allData.Where(x => x.Name.Contains(FilterValue)),
+            "Дата начала" => allData.Where(x => x.StartDate.ToString("dd.MM.yyyy").Contains(FilterValue)),
+            "Дата конца" => allData.Where(x => x.EndDate.ToString("dd.MM.yyyy").Contains(FilterValue)),
+            "Коэффициент" => allData.Where(x => x.Ratio.ToString().Contains(FilterValue)),
+            _ => allData
+        };
     }
 }

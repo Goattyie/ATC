@@ -2,85 +2,39 @@
 using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Views.Tables.Call;
-using DevExpress.Mvvm;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ATC.Wpf.ViewModels.Tables.Call
 {
-    internal class CallModelMessage : IMessage
+    internal class CallPageViewModel : AbstractTablePageViewModel<CreateCallWindow, UpdateCallWindow, CallModel, UpdateCallWindowViewModel>
     {
-        public CallModel Call { get; set; }
-    }
-
-    internal class CallNewModelEvent : IEvent
-    {
-        public CallModel Call { get; set; }
-    }
-
-    internal class CallUpdateModelEvent : IEvent
-    {
-        public CallModel Call { get; set; }
-    }
-
-    internal class CallPageViewModel
-    {
-        private readonly ICallRepository _repository;
-        private readonly MessageBus _messageBus;
-
-        public ObservableCollection<CallModel> Calls { get; }
-        public CallModel SelectedCall { get; set; }
-
-        public CallPageViewModel(ICallRepository repository, MessageBus messageBus, EventBus eventBus)
+        public CallPageViewModel(ICallRepository repository, MessageBus messageBus, EventBus eventBus) : base(repository, messageBus, eventBus)
         {
-            _repository = repository;
-            _messageBus = messageBus;
-
-            Calls = new ObservableCollection<CallModel>();
-
-            LoadData();
-
-            eventBus.Subscribe<CallNewModelEvent>((@event) => { Calls.Add(@event.Call); return Task.CompletedTask; });
-            eventBus.Subscribe<CallUpdateModelEvent>((@event) =>
-            {
-                var oldValue = Calls.First(x => x.Id == @event.Call.Id);
-                var index = Calls.IndexOf(oldValue);
-
-                Calls.Remove(oldValue);
-                Calls.Insert(index, @event.Call);
-
-                return Task.CompletedTask;
-            });
         }
 
-        public IDelegateCommand CreateCommand => new DelegateCommand(() => { new CreateCallWindow().Show(); });
-        public IAsyncCommand UpdateCommand => new AsyncCommand(async () =>
+        public override List<string> Filters { get; set; } = new List<string>
         {
-            if (SelectedCall is null)
-                return;
+            "Название АТС",
+            "Город",
+            "Цена",
+            "Куда звонили",
+            "Откуда звонили",
+            "Время разговора",
+            "Дата звонка",
+            "Название тарифа"
+        };
 
-            new UpdateCallWindow().Show();
-
-            await _messageBus.SendTo<UpdateCallWindowViewModel>(new CallModelMessage { Call = SelectedCall });
-        });
-        public IAsyncCommand DeleteCommand => new AsyncCommand(async () =>
+        protected override IEnumerable<CallModel> FilterData(IEnumerable<CallModel> allData) => SelectedFilter switch
         {
-            while (SelectedCall != null)
-            {
-                await _repository.Delete(SelectedCall.Id);
-                Calls.Remove(SelectedCall);
-            }
-        });
-
-        private async Task LoadData()
-        {
-            Calls.Clear();
-
-            var list = await _repository.Get();
-
-            foreach (var item in list)
-                Calls.Add(item);
-        }
+            "Название АТС" => allData.Where(x => x.AtcName.Contains(FilterValue)),
+            "Город" => allData.Where(x => x.CityName.Contains(FilterValue)),
+            "Цена" => allData.Where(x => x.Cost.ToString().Contains(FilterValue)),
+            "Куда звонили" => allData.Where(x => x.Phone.Contains(FilterValue)),
+            "Откуда звонили" => allData.Where(x => x.AbonentPhone.Contains(FilterValue)),
+            "Время разговора" => allData.Where(x => x.Time.ToString().Contains(FilterValue)),
+            "Дата звонка" => allData.Where(x => x.CallDate.ToString("dd.MM.yyyy").Contains(FilterValue)),
+            "Название тарифа" => allData.Where(x => x.TariffName.Contains(FilterValue)),
+        };
     }
 }

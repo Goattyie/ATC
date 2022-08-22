@@ -53,7 +53,7 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
             try
             {
                 await _atcRepository.Create(Atc);
-                await _eventBus.Publish(new AtcNewModelEvent { Atc = Atc });
+                await _eventBus.Publish(new AbstractNewModelEvent<AtcModel> { Model = Atc });
                 window.Close();
                 MessageBoxManager.ShowInformation("АТС успешно добавлена.");
                

@@ -25,7 +25,7 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
             Atc = new();
             Areas = new();
 
-            messageBus.Recieve<AtcModelMessage>(this, LoadAtcModel);
+            messageBus.Recieve<AbstractModelMessage<AtcModel>>(this, LoadAtcModel);
         }
 
         public Action OnClose { get; set; }
@@ -33,11 +33,11 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
         public ObservableCollection<AreaModel> Areas { get; set; }
         public AreaModel SelectedArea { get; set; }
 
-        private async Task LoadAtcModel(AtcModelMessage msg)
+        private async Task LoadAtcModel(AbstractModelMessage<AtcModel> msg)
         {
             await LoadAreas();
 
-            Atc = msg.Atc;
+            Atc = msg.Model;
             SelectedArea = Areas.FirstOrDefault(x => x.Id == Atc.AreaId);
         }
 
@@ -59,7 +59,7 @@ namespace ATC.Wpf.ViewModels.Tables.Atc
             try
             {
                 await _atcRepository.Update(Atc);
-                await _eventBus.Publish(new AtcUpdateModelEvent { Atc = Atc });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<AtcModel> { Model = Atc });
                 window.Close();
                 MessageBoxManager.ShowInformation("АТС успешно обновлена.");
             }

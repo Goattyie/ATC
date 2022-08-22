@@ -28,7 +28,7 @@ namespace ATC.Wpf.ViewModels.Tables.SocialStatus
             try
             {
                 await _repository.Create(SocialStatus);
-                await _eventBus.Publish(new SocialStatusNewModelEvent { SocialStatus = SocialStatus });
+                await _eventBus.Publish(new AbstractNewModelEvent<SocialStatusModel> { Model = SocialStatus });
                 window.Close();
                 MessageBoxManager.ShowInformation("Социальное положение успешно добавлено.");
 

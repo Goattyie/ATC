@@ -3,83 +3,37 @@ using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Views.Tables.Abonent;
 using DevExpress.Mvvm;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ATC.Wpf.ViewModels.Tables.Abonent
 {
-    internal class AbonentModelMessage : IMessage
+    internal class AbonentPageViewModel : AbstractTablePageViewModel<CreateAbonentWindow, UpdateAbonentWindow, AbonentModel, UpdateAbonentWindowViewModel>
     {
-        public AbonentModel Abonent { get; set; }
-    }
-
-    internal class AbonentNewModelEvent : IEvent
-    {
-        public AbonentModel Abonent { get; set; }
-    }
-
-    internal class AbonentUpdateModelEvent : IEvent
-    {
-        public AbonentModel Abonent { get; set; }
-    }
-
-    internal class AbonentPageViewModel : BindableBase
-    {
-        private readonly IAbonentRepository _repository;
-        private readonly MessageBus _messageBus;
-
-        public AbonentPageViewModel(IAbonentRepository repository, MessageBus messageBus, EventBus eventBus)
+        public AbonentPageViewModel(IAbonentRepository repository, MessageBus messageBus, EventBus eventBus) : base(repository, messageBus, eventBus)
         {
-            _repository = repository;
-            _messageBus = messageBus;
-
-            Abonents = new ObservableCollection<AbonentModel>();
-
-            LoadData();
-
-            eventBus.Subscribe<AbonentNewModelEvent>((@event) => { Abonents.Add(@event.Abonent); return Task.CompletedTask; });
-            eventBus.Subscribe<AbonentUpdateModelEvent>((@event) =>
-            {
-                var oldValue = Abonents.First(x => x.Id == @event.Abonent.Id);
-                var index = Abonents.IndexOf(oldValue);
-
-                Abonents.Remove(oldValue);
-                Abonents.Insert(index, @event.Abonent);
-
-                return Task.CompletedTask;
-            });
         }
 
-        public ObservableCollection<AbonentModel> Abonents { get; set; }
-        public AbonentModel SelectedAbonent { get; set; }
-        public IDelegateCommand CreateCommand => new DelegateCommand(() => { new CreateAbonentWindow().Show(); });
-        public IAsyncCommand UpdateCommand => new AsyncCommand(async () =>
+        public override List<string> Filters { get; set; } = new List<string>
         {
-            if (SelectedAbonent is null)
-                return;
+            "Фамилия",
+            "Имя",
+            "Отчество",
+            "Номер телефона",
+            "Фото",
+            "Социальный статус"
+        };
 
-            new UpdateAbonentWindow().Show();
-
-            await _messageBus.SendTo<UpdateAbonentWindowViewModel>(new AbonentModelMessage { Abonent = SelectedAbonent });
-        });
-        public IAsyncCommand DeleteCommand => new AsyncCommand(async () =>
+        protected override IEnumerable<AbonentModel> FilterData(IEnumerable<AbonentModel> allData) => SelectedFilter switch
         {
-            while (SelectedAbonent != null)
-            {
-                await _repository.Delete(SelectedAbonent.Id);
-                Abonents.Remove(SelectedAbonent);
-            }
-        });
-
-        private async Task LoadData()
-        {
-            Abonents.Clear();
-
-            var list = await _repository.Get();
-
-            foreach (var item in list)
-                Abonents.Add(item);
-        }
+            "Фамилия" => allData.Where(x => x.SecondName.Contains(FilterValue)),
+            "Имя" => allData.Where(x => x.FirstName.Contains(FilterValue)),
+            "Отчество" => allData.Where(x => x.LastName.Contains(FilterValue)),
+            "Номер телефона" => allData.Where(x => x.Phone.Contains(FilterValue)),
+            "Фото" => allData.Where(x => x.Photo.Contains(FilterValue)),
+            "Социальный статус" => allData.Where(x => x.SocialStatusName.Contains(FilterValue))
+        };
     }
 }

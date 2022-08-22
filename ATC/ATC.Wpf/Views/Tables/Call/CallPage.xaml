@@ -27,20 +27,24 @@
             </Grid.ColumnDefinitions>
 
             <ComboBox Style="{StaticResource UsualComboBox}"
-                      VerticalAlignment="Center"/>
+                      VerticalAlignment="Center"
+                      ItemsSource="{Binding Filters}"
+                      SelectedItem="{Binding SelectedFilter}"/>
             <TextBox Grid.Column="1"
                      Style="{StaticResource TextBoxWithWatermark}"
                      Tag="Поиск"
-                     Margin="10 0"/>
+                     Margin="10 0"
+                     Text="{Binding FilterValue}"/>
             <Button Grid.Column="2"
                     Style="{StaticResource UsualBtnStyle}"
-                    Content="Найти"/>
+                    Content="Найти"
+                    Command="{Binding FilterCommand}"/>
         </Grid>
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Calls}"
+                  ItemsSource="{Binding Data}"
                   Style="{StaticResource UsualDataGrid}"
-                  SelectedItem="{Binding SelectedCall}">
+                  SelectedItem="{Binding SelectedData}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#" Width="70" MaxWidth="100" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название АТС" Width="200" MaxWidth="350" Binding="{Binding Path=AtcName}"></DataGridTextColumn>
@@ -48,6 +52,7 @@
                 <DataGridTextColumn Header="Кому" Width="200" MaxWidth="350"  Binding="{Binding Path=Phone}"></DataGridTextColumn>
                 <DataGridTextColumn Header="От кого" Width="200" Binding="{Binding Path=AbonentPhone}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Время" Width="100" Binding="{Binding Path=Time}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Width="100" Binding="{Binding Path=Cost}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Город" Width="*" Binding="{Binding Path=CityName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Тариф" Width="*" Binding="{Binding Path=TariffName}"></DataGridTextColumn>
             </DataGrid.Columns>

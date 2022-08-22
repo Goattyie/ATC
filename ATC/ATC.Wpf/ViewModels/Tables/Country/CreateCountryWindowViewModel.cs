@@ -29,7 +29,7 @@ namespace ATC.Wpf.ViewModels.Tables.Country
             try
             {
                 await _repository.Create(Country);
-                await _eventBus.Publish(new CountryNewModelEvent { Country = Country });
+                await _eventBus.Publish(new AbstractNewModelEvent<CountryModel> { Model = Country });
                 window.Close();
                 MessageBoxManager.ShowInformation("Страна успешно добавлена.");
 

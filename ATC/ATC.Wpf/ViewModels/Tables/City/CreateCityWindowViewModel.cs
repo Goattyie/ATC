@@ -42,7 +42,7 @@ namespace ATC.Wpf.ViewModels.Tables.City
             try
             {
                 await _cityRepository.Create(City);
-                await _eventBus.Publish(new CityNewModelEvent { City = City });
+                await _eventBus.Publish(new AbstractNewModelEvent<CityModel> { Model = City });
                 window.Close();
                 MessageBoxManager.ShowInformation("Город успешно добавлен.");
 

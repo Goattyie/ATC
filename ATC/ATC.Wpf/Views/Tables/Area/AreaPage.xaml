@@ -27,20 +27,24 @@
             </Grid.ColumnDefinitions>
 
             <ComboBox Style="{StaticResource UsualComboBox}"
-                      VerticalAlignment="Center"/>
+                      VerticalAlignment="Center"
+                      ItemsSource="{Binding Filters}"
+                      SelectedItem="{Binding SelectedFilter}"/>
             <TextBox Grid.Column="1"
                      Style="{StaticResource TextBoxWithWatermark}"
                      Tag="Поиск"
-                     Margin="10 0"/>
+                     Margin="10 0"
+                     Text="{Binding FilterValue}"/>
             <Button Grid.Column="2"
                     Style="{StaticResource UsualBtnStyle}"
-                    Content="Найти"/>
+                    Content="Найти"
+                    Command="{Binding FilterCommand}"/>
         </Grid>
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Areas}"
+                  ItemsSource="{Binding Data}"
                   Style="{StaticResource UsualDataGrid}"
-                  SelectedItem="{Binding SelectedArea}">
+                  SelectedItem="{Binding SelectedData}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#" Width="70" MaxWidth="100" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Район" Width="*" Binding="{Binding Path=Name}"></DataGridTextColumn>

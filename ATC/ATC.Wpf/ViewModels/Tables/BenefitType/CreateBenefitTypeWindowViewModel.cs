@@ -28,7 +28,7 @@ namespace ATC.Wpf.ViewModels.Tables.BenefitType
             try
             {
                 await _benefitTypeRepository.Create(BenefitType);
-                await _eventBus.Publish(new BenefitTypeNewModelEvent { BenefitType = BenefitType });
+                await _eventBus.Publish(new AbstractNewModelEvent<BenefitTypeModel> { Model = BenefitType });
                 window.Close();
                 MessageBoxManager.ShowInformation("Льгота успешно добавлена.");
             }

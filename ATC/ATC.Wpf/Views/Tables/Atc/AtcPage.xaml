@@ -27,25 +27,29 @@
             </Grid.ColumnDefinitions>
 
             <ComboBox Style="{StaticResource UsualComboBox}"
-                      VerticalAlignment="Center"/>
+                      VerticalAlignment="Center"
+                      ItemsSource="{Binding Filters}"
+                      SelectedItem="{Binding SelectedFilter}"/>
             <TextBox Grid.Column="1"
                      Style="{StaticResource TextBoxWithWatermark}"
                      Tag="Поиск"
-                     Margin="10 0"/>
+                     Margin="10 0"
+                     Text="{Binding FilterValue}"/>
             <Button Grid.Column="2"
                     Style="{StaticResource UsualBtnStyle}"
-                    Content="Найти"/>
+                    Content="Найти"
+                    Command="{Binding FilterCommand}"/>
         </Grid>
         
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Atces}"
+                  ItemsSource="{Binding Data}"
                   Style="{StaticResource UsualDataGrid}"
-                  SelectedItem="{Binding SelectedAtc}">
+                  SelectedItem="{Binding SelectedData}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#" Width="70" MaxWidth="100" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название" Width="200" MaxWidth="350" Binding="{Binding Path=Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Код" Width="200" MaxWidth="250"  Binding="{Binding Path=Code}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Аддресс" Width="300" MaxWidth="350"  Binding="{Binding Path=Address}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Адрес" Width="300" MaxWidth="350"  Binding="{Binding Path=Address}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Район" Width="200" Binding="{Binding Path=AreaName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Государственный" Width="150" Binding="{Binding Path=IsState}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Лицензия" Width="100" Binding="{Binding Path=License}"></DataGridTextColumn>

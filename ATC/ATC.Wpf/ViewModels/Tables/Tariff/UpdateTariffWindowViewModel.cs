@@ -22,9 +22,9 @@ namespace ATC.Wpf.ViewModels.Tables.Tariff
 
             Tariff = new();
 
-            messageBus.Recieve<TariffModelMessage>(this, (msg) =>
+            messageBus.Recieve<AbstractModelMessage<TariffModel>>(this, (msg) =>
             {
-                Tariff = msg.Tariff;
+                Tariff = msg.Model;
                 return Task.CompletedTask;
             });
         }
@@ -36,7 +36,7 @@ namespace ATC.Wpf.ViewModels.Tables.Tariff
             try
             {
                 await _tariffRepository.Update(Tariff);
-                await _eventBus.Publish(new TariffUpdateModelEvent { Tariff = Tariff });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<TariffModel>{ Model = Tariff });
                 window.Close();
                 MessageBoxManager.ShowInformation("Тариф успешно обновлен.");
 

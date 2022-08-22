@@ -40,7 +40,7 @@ namespace ATC.Wpf.ViewModels.Tables.Call
             Abonents = new();
             Tariffs = new();
 
-            messageBus.Recieve<CallModelMessage>(this, LoadData);
+            messageBus.Recieve<AbstractModelMessage<CallModel>>(this, LoadData);
         }
 
         public CallModel Call { get; set; }
@@ -67,7 +67,7 @@ namespace ATC.Wpf.ViewModels.Tables.Call
             try
             {
                 await _callRepository.Update(Call);
-                await _eventBus.Publish(new CallUpdateModelEvent { Call = Call });
+                await _eventBus.Publish(new AbstractUpdateModelEvent<CallModel> { Model = Call });
                 window.Close();
                 MessageBoxManager.ShowInformation("Вызов успешно обновлен.");
 
@@ -79,7 +79,7 @@ namespace ATC.Wpf.ViewModels.Tables.Call
             }
         });
 
-        private async Task LoadData(CallModelMessage msg)
+        private async Task LoadData(AbstractModelMessage<CallModel> msg)
         {
             Atces.Clear();
             Cities.Clear();
@@ -103,7 +103,7 @@ namespace ATC.Wpf.ViewModels.Tables.Call
             foreach (var item in tariffs)
                 Tariffs.Add(item);
 
-            Call = msg.Call;
+            Call = msg.Model;
 
             SelectedAbonent = Abonents.FirstOrDefault(x => x.Id == Call.AbonentId);
             SelectedAtc = Atces.FirstOrDefault(x => x.Id == Call.AtcId);
