@@ -99,6 +99,12 @@
                     <Button Height="30"
                             BorderBrush="#FFC84141"
                             BorderThickness="3 0 0 0"
+                            Content="Запросы"
+                            Command="{Binding QueryModule}"
+                            Style="{StaticResource MenuBtnStyle}"/>
+                    <Button Height="30"
+                            BorderBrush="#FFC84141"
+                            BorderThickness="3 0 0 0"
                             Content="Сгенерировать"
                             Command="{Binding GenerateData}"
                             Style="{StaticResource MenuBtnStyle}"/>

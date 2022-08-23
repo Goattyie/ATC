@@ -30,8 +30,8 @@ namespace ATC.Wpf.ViewModels.Tables
     }
 
     internal abstract class AbstractTablePageViewModel<TCreateWindow, TUpdateWindow, TModel, TUpdateWindowViewModel> : BindableBase
-        where TCreateWindow : Window
-        where TUpdateWindow : Window
+        where TCreateWindow : Window, new()
+        where TUpdateWindow : Window, new()
         where TModel : BaseModel
         where TUpdateWindowViewModel : BindableBase
     {
@@ -67,15 +67,13 @@ namespace ATC.Wpf.ViewModels.Tables
         public string FilterValue { get; set; }
         public ObservableCollection<TModel> Data { get; set; }
         public TModel SelectedData { get; set; }
-        public IDelegateCommand CreateCommand => new DelegateCommand(() => { var createWindow = (TCreateWindow)Activator.CreateInstance(typeof(TCreateWindow)); createWindow.Show(); });
+        public IDelegateCommand CreateCommand => new DelegateCommand(() => { new TCreateWindow().Show(); });
         public IAsyncCommand UpdateCommand => new AsyncCommand(async () =>
         {
             if (SelectedData is null)
                 return;
 
-            var updateWindow = (TUpdateWindow)Activator.CreateInstance(typeof(TUpdateWindow));
-
-            updateWindow.Show();
+            new TUpdateWindow().Show();
 
             await MessageBus.SendTo<TUpdateWindowViewModel>(new AbstractModelMessage<TModel> { Model = SelectedData });
         });

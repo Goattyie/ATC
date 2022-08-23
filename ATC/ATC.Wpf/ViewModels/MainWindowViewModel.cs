@@ -2,6 +2,7 @@
 using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
+using ATC.Wpf.Views.Queries;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Area;
@@ -16,6 +17,7 @@ using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace ATC.Wpf.ViewModels
 {
@@ -23,30 +25,32 @@ namespace ATC.Wpf.ViewModels
     {
         private readonly DataInitializer _dataInitializer;
         private readonly IEnumerable<ITablePage> _tablePages;
+        private readonly QueriesControlPage _queryPage;
 
-        public MainWindowViewModel(IEnumerable<ITablePage> tablePages, DataInitializer dataInitializer)
+        public MainWindowViewModel(IEnumerable<ITablePage> tablePages, QueriesControlPage queryPage, DataInitializer dataInitializer)
         {
             _dataInitializer = dataInitializer;
             _tablePages = tablePages;
-            CurrentPage = _tablePages.FirstOrDefault();
+            _queryPage = queryPage;
+            CurrentPage = (Page)_tablePages.FirstOrDefault();
         }
 
-        public ITablePage CurrentPage { get; set; }
+        public Page CurrentPage { get; set; }
 
         public IDelegateCommand SelectTablePage => new DelegateCommand<string>((string table) =>
         {
             switch (table)
             {
-                case "atc": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AtcPage)); break;
-                case "call": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CallPage)); break;
-                case "abonent": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AbonentPage)); break;
-                case "benefit": CurrentPage = _tablePages.First(x => x.GetType() == typeof(BenefitPage)); break;
-                case "country": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CountryPage)); break;
-                case "city": CurrentPage = _tablePages.First(x => x.GetType() == typeof(CityPage)); break;
-                case "area": CurrentPage = _tablePages.First(x => x.GetType() == typeof(AreaPage)); break;
-                case "tariff": CurrentPage = _tablePages.First(x => x.GetType() == typeof(TariffPage)); break;
-                case "socialstatus": CurrentPage = _tablePages.First(x => x.GetType() == typeof(SocialStatusPage)); break;
-                case "benefittype": CurrentPage = _tablePages.First(x => x.GetType() == typeof(BenefitTypePage)); break;
+                case "atc": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(AtcPage)); break;
+                case "call": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(CallPage)); break;
+                case "abonent": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(AbonentPage)); break;
+                case "benefit": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(BenefitPage)); break;
+                case "country": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(CountryPage)); break;
+                case "city": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(CityPage)); break;
+                case "area": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(AreaPage)); break;
+                case "tariff": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(TariffPage)); break;
+                case "socialstatus": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(SocialStatusPage)); break;
+                case "benefittype": CurrentPage = (Page)_tablePages.First(x => x.GetType() == typeof(BenefitTypePage)); break;
             }
         });
 
@@ -57,6 +61,11 @@ namespace ATC.Wpf.ViewModels
             {
                 MessageBoxManager.ShowError(ex.Message);
             }
+        });
+
+        public IDelegateCommand QueryModule => new DelegateCommand(() =>
+        {
+            CurrentPage = _queryPage;
         });
     }
 }

@@ -268,7 +268,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_abonents_by_social_status('Учитель')
+SELECT * FROM get_abonents_by_social_status('Учитель');
 
 --Вывести все районы указанного города 
 CREATE OR REPLACE FUNCTION get_areas_by_city(city TEXT)
@@ -283,7 +283,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_areas_by_city('Таганрог')
+SELECT * FROM get_areas_by_city('Таганрог');
 
 --Вывести все звонки, совершенные после указанной даты
 CREATE OR REPLACE FUNCTION get_calls_by_call_date(call_dt DATE)

@@ -1,9 +1,12 @@
 ﻿using ATC.Wpf.Abstractions;
+using ATC.Wpf.Queries;
+using ATC.Wpf.Queries.Interfaces;
 using ATC.Wpf.Repositories;
 using ATC.Wpf.Repositories.Interfaces;
 using ATC.Wpf.Services;
 using ATC.Wpf.Services.DataGenerators;
 using ATC.Wpf.ViewModels;
+using ATC.Wpf.ViewModels.Queries;
 using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Area;
 using ATC.Wpf.ViewModels.Tables.Atc;
@@ -14,6 +17,7 @@ using ATC.Wpf.ViewModels.Tables.City;
 using ATC.Wpf.ViewModels.Tables.Country;
 using ATC.Wpf.ViewModels.Tables.SocialStatus;
 using ATC.Wpf.ViewModels.Tables.Tariff;
+using ATC.Wpf.Views.Queries;
 using ATC.Wpf.Views.Tables;
 using ATC.Wpf.Views.Tables.Abonent;
 using ATC.Wpf.Views.Tables.Area;
@@ -110,6 +114,12 @@ namespace ATC.Wpf.DI
             services.AddTransient<BenefitTypePageViewModel>();
             services.AddTransient<CreateBenefitTypeWindowViewModel>();
             services.AddTransient<UpdateBenefitTypeWindowViewModel>();
+            services.AddTransient<AbonentsBySocialStatusQueryPageViewModel>();
+            services.AddTransient<QueriesControlPageViewModel>();
+            services.AddTransient<AreasByCityQueryPageViewModel>();
+            services.AddTransient<CallsByCallDateQueryPageViewModel>();
+            services.AddTransient<TariffsByEndDateQueryPageViewModel>();
+            services.AddTransient<AbonentsInfoQueryPageViewModel>();
 
             #endregion
 
@@ -125,6 +135,27 @@ namespace ATC.Wpf.DI
             services.AddTransient<ITablePage, TariffPage>();
             services.AddTransient<ITablePage, SocialStatusPage>();
             services.AddTransient<ITablePage, BenefitTypePage>();
+
+            #endregion
+
+            #region Query Pages
+
+            services.AddSingleton<QueriesControlPage>();
+            services.AddTransient<IQueryPage, AbonentsBySocialStatusQueryPage>();
+            services.AddTransient<IQueryPage, AreasByCityQueryPage>();
+            services.AddTransient<IQueryPage, CallsByCallDateQueryPage>();
+            services.AddTransient<IQueryPage, TariffsByEndDateQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsInfoQueryPage>();
+
+            #endregion
+
+            #region Queries
+
+            services.AddTransient<IAbonentsBySocialStatusQuery, AbonentsBySocialStatusQuery>();
+            services.AddTransient<IAreasByCityQuery, AreasByCityQuery>();
+            services.AddTransient<ICallsByCallDateQuery, CallsByCallDateQuery>();
+            services.AddTransient<ITariffsByEndDateQuery, TariffsByEndDateQuery>();
+            services.AddTransient<IAbonentsInfoQuery, AbonentsInfoQuery>();
 
             #endregion
 

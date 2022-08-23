@@ -1,5 +1,6 @@
 ﻿using ATC.Wpf.DI;
 using ATC.Wpf.ViewModels;
+using ATC.Wpf.ViewModels.Queries;
 using ATC.Wpf.ViewModels.Tables.Abonent;
 using ATC.Wpf.ViewModels.Tables.Area;
 using ATC.Wpf.ViewModels.Tables.Atc;
@@ -47,5 +48,11 @@ namespace ATC.Wpf.Services
         public BenefitTypePageViewModel BenefitTypePageViewModel => IoC.Resolve<BenefitTypePageViewModel>();
         public CreateBenefitTypeWindowViewModel CreateBenefitTypeWindowViewModel => IoC.Resolve<CreateBenefitTypeWindowViewModel>();
         public UpdateBenefitTypeWindowViewModel UpdateBenefitTypeWindowViewModel => IoC.Resolve<UpdateBenefitTypeWindowViewModel>();
+        public AbonentsBySocialStatusQueryPageViewModel AbonentsBySocialStatusQueryPageViewModel => IoC.Resolve<AbonentsBySocialStatusQueryPageViewModel>();
+        public QueriesControlPageViewModel QueriesControlPageViewModel => IoC.Resolve<QueriesControlPageViewModel>();
+        public AreasByCityQueryPageViewModel AreasByCityQueryPageViewModel => IoC.Resolve<AreasByCityQueryPageViewModel>();
+        public CallsByCallDateQueryPageViewModel CallsByCallDateQueryViewModel => IoC.Resolve<CallsByCallDateQueryPageViewModel>();
+        public TariffsByEndDateQueryPageViewModel TariffsByEndDateQueryPageViewModel => IoC.Resolve<TariffsByEndDateQueryPageViewModel>();
+        public AbonentsInfoQueryPageViewModel AbonentsInfoQueryPageViewModel => IoC.Resolve<AbonentsInfoQueryPageViewModel>();
     }
 }
