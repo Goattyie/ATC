@@ -54,5 +54,10 @@ namespace ATC.Wpf.Services
         public CallsByCallDateQueryPageViewModel CallsByCallDateQueryViewModel => IoC.Resolve<CallsByCallDateQueryPageViewModel>();
         public TariffsByEndDateQueryPageViewModel TariffsByEndDateQueryPageViewModel => IoC.Resolve<TariffsByEndDateQueryPageViewModel>();
         public AbonentsInfoQueryPageViewModel AbonentsInfoQueryPageViewModel => IoC.Resolve<AbonentsInfoQueryPageViewModel>();
+        public AbonentsBenefitInfoQueryPageViewModel AbonentsBenefitInfoQueryPageViewModel => IoC.Resolve<AbonentsBenefitInfoQueryPageViewModel>();
+        public AtcesAreaInfoQueryPageViewModel AtcesAreaInfoQueryPageViewModel => IoC.Resolve<AtcesAreaInfoQueryPageViewModel>();
+        public CallsWhereTariffRatioIsNotNullQueryPageViewModel CallsWhereTariffRatioIsNotNullQueryPageViewModel => IoC.Resolve<CallsWhereTariffRatioIsNotNullQueryPageViewModel>();
+        public AbonentsHaveCallsQueryPageViewModel AbonentsHaveCallsQueryPageViewModel => IoC.Resolve<AbonentsHaveCallsQueryPageViewModel>();
+        public AbonentsHaveCallsByPhoneQueryPageViewModel AbonentsHaveCallsByPhoneQueryPageViewModel => IoC.Resolve<AbonentsHaveCallsByPhoneQueryPageViewModel>();
     }
 }

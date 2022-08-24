@@ -120,6 +120,11 @@ namespace ATC.Wpf.DI
             services.AddTransient<CallsByCallDateQueryPageViewModel>();
             services.AddTransient<TariffsByEndDateQueryPageViewModel>();
             services.AddTransient<AbonentsInfoQueryPageViewModel>();
+            services.AddTransient<AbonentsBenefitInfoQueryPageViewModel>();
+            services.AddTransient<AtcesAreaInfoQueryPageViewModel>();
+            services.AddTransient<CallsWhereTariffRatioIsNotNullQueryPageViewModel>();
+            services.AddTransient<AbonentsHaveCallsQueryPageViewModel>();
+            services.AddTransient<AbonentsHaveCallsByPhoneQueryPageViewModel>();
 
             #endregion
 
@@ -146,6 +151,11 @@ namespace ATC.Wpf.DI
             services.AddTransient<IQueryPage, CallsByCallDateQueryPage>();
             services.AddTransient<IQueryPage, TariffsByEndDateQueryPage>();
             services.AddTransient<IQueryPage, AbonentsInfoQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsBenefitInfoQueryPage>();
+            services.AddTransient<IQueryPage, AtcesAreaInfoQueryPage>();
+            services.AddTransient<IQueryPage, CallsWhereTariffRatioIsNotNullQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsHaveCallsQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsHaveCallsByPhoneQueryPage>();
 
             #endregion
 
@@ -156,6 +166,11 @@ namespace ATC.Wpf.DI
             services.AddTransient<ICallsByCallDateQuery, CallsByCallDateQuery>();
             services.AddTransient<ITariffsByEndDateQuery, TariffsByEndDateQuery>();
             services.AddTransient<IAbonentsInfoQuery, AbonentsInfoQuery>();
+            services.AddTransient<IAbonentsBenefitInfoQuery, AbonentsBenefitInfoQuery>();
+            services.AddTransient<IAtcesAreaInfoQuery, AtcesAreaInfoQuery>();
+            services.AddTransient<ICallsWhereTariffRatioIsNotNullQuery, CallsWhereTariffRatioIsNotNullQuery>();
+            services.AddTransient<IAbonentsHaveCallsQuery, AbonentsHaveCallsQuery>();
+            services.AddTransient<IAbonentsHaveCallsByPhoneQuery, AbonentsHaveCallsByPhoneQuery>();
 
             #endregion
 

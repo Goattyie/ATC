@@ -1,0 +1,50 @@
+﻿<Page x:Class="ATC.Wpf.Views.Queries.AbonentsHaveCallsByPhoneQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ATC.Wpf.Views.Queries"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="AbonentsHaveCallsByPhoneQuery"  DataContext="{Binding Source={StaticResource VMLocator}, Path=AbonentsHaveCallsByPhoneQueryPageViewModel}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="../../Styles.xaml"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                    Height="30"
+                    Tag="Номер телефона"
+                    Text="{Binding InputData.Value}"/>
+            <Button Grid.Column="1"
+                Style="{StaticResource UsualBtnStyle}"
+                Content="Выполнить"
+                Height="30"
+                Command="{Binding ExecuteCommand}"/>
+        </Grid>
+
+        <DataGrid Grid.Row="1"
+                  Style="{StaticResource UsualDataGrid}"
+                  ItemsSource="{Binding Data}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Width="1*" Binding="{Binding Path=SecondName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Width="1*" Binding="{Binding Path=FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Width="1*" Binding="{Binding Path=LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Width="1*" Binding="{Binding Path=Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата звонка" Width="1*" Binding="{Binding Path=CallDate, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
