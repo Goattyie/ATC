@@ -125,6 +125,24 @@ namespace ATC.Wpf.DI
             services.AddTransient<CallsWhereTariffRatioIsNotNullQueryPageViewModel>();
             services.AddTransient<AbonentsHaveCallsQueryPageViewModel>();
             services.AddTransient<AbonentsHaveCallsByPhoneQueryPageViewModel>();
+            services.AddTransient<TimeCallsSumQueryPageViewModel>();
+            services.AddTransient<CountAbonentsBySocialStatusQueryPageViewModel>();
+            services.AddTransient<AbonentsByCallTimeSumQueryPageViewModel>();
+            services.AddTransient<SocialStatusByMaskQueryPageViewModel>();
+            services.AddTransient<AbonentsByCallsCostSumQueryPageViewModel>();
+            services.AddTransient<AbonentsByCallsCostDateSumQueryPageViewModel>();
+            services.AddTransient<FirmsSumConnectionCostInflationQueryPageViewModel>();
+            services.AddTransient<AreasWithCitiesAndCountriesQueryPageViewModel>();
+            services.AddTransient<CallsByAtcAreaNameQueryPageViewModel>();
+            services.AddTransient<CallsNoByAtcAreaNameQueryPageViewModel>();
+            services.AddTransient<CaseQueryPageViewModel>();
+            services.AddTransient<DiffCallCostQueryPageViewModel>();
+            services.AddTransient<AtcesPopularStatusesQueryPageViewModel>();
+            services.AddTransient<CitiesPopularStatusesQueryPageViewModel>();
+            services.AddTransient<AvgCallTimeByAtcQueryPageViewModel>();
+            services.AddTransient<AvgCallTimeByCityQueryPageViewModel>();
+            services.AddTransient<CitiesCallsQueryPageViewModel>();
+            services.AddTransient<CountriesCallsQueryPageViewModel>();
 
             #endregion
 
@@ -156,6 +174,24 @@ namespace ATC.Wpf.DI
             services.AddTransient<IQueryPage, CallsWhereTariffRatioIsNotNullQueryPage>();
             services.AddTransient<IQueryPage, AbonentsHaveCallsQueryPage>();
             services.AddTransient<IQueryPage, AbonentsHaveCallsByPhoneQueryPage>();
+            services.AddTransient<IQueryPage, TimeCallsSumQueryPage>();
+            services.AddTransient<IQueryPage, CountAbonentsBySocialStatusQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsByCallTimeSumQueryPage>();
+            services.AddTransient<IQueryPage, SocialStatusByMaskQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsByCallsCostSumQueryPage>();
+            services.AddTransient<IQueryPage, AbonentsByCallsCostDateSumQueryPage>();
+            services.AddTransient<IQueryPage, FirmsSumConnectionCostInflationQueryPage>();
+            services.AddTransient<IQueryPage, AreasWithCitiesAndCountriesQueryPage>();
+            services.AddTransient<IQueryPage, CallsByAtcAreaNameQueryPage>();
+            services.AddTransient<IQueryPage, CallsNoByAtcAreaNameQueryPage>();
+            services.AddTransient<IQueryPage, CaseQueryPage>();
+            services.AddTransient<IQueryPage, DiffCallCostQueryPage>();
+            services.AddTransient<IQueryPage, AtcesPopularStatusesQueryPage>();
+            services.AddTransient<IQueryPage, CitiesPopularStatusesQueryPage>();
+            services.AddTransient<IQueryPage, AvgCallTimeByAtcQueryPage>();
+            services.AddTransient<IQueryPage, AvgCallTimeByCityQueryPage>();
+            services.AddTransient<IQueryPage, CitiesCallsQueryPage>();
+            services.AddTransient<IQueryPage, CountriesCallsQueryPage>();
 
             #endregion
 
@@ -171,6 +207,24 @@ namespace ATC.Wpf.DI
             services.AddTransient<ICallsWhereTariffRatioIsNotNullQuery, CallsWhereTariffRatioIsNotNullQuery>();
             services.AddTransient<IAbonentsHaveCallsQuery, AbonentsHaveCallsQuery>();
             services.AddTransient<IAbonentsHaveCallsByPhoneQuery, AbonentsHaveCallsByPhoneQuery>();
+            services.AddTransient<ITimeCallsSumQuery, TimeCallsSumQuery>();
+            services.AddTransient<ICountAbonentsBySocialStatusQuery, CountAbonentsBySocialStatusQuery>();
+            services.AddTransient<IAbonentsByCallTimeSumQuery, AbonentsByCallTimeSumQuery>();
+            services.AddTransient<ISocialStatusByMaskQuery, SocialStatusByMaskQuery>();
+            services.AddTransient<IAbonentsByCallsCostSumQuery, AbonentsByCallsCostSumQuery>();
+            services.AddTransient<IAbonentsByCallsCostDateSumQuery, AbonentsByCallsCostDateSumQuery>();
+            services.AddTransient<IFirmsSumConnectionCostInflationQuery, FirmsSumConnectionCostInflationQuery>();
+            services.AddTransient<IAreasWithCitiesAndCountriesQuery, AreasWithCitiesAndCountriesQuery>();
+            services.AddTransient<ICallsByAtcAreaNameQuery, CallsByAtcAreaNameQuery>();
+            services.AddTransient<ICallsNoByAtcAreaNameQuery, CallsNoByAtcAreaNameQuery>();
+            services.AddTransient<ICaseQuery, CaseQuery>();
+            services.AddTransient<IDiffCallCostQuery, DiffCallCostQuery>();
+            services.AddTransient<IAtcesPopularStatusesQuery, AtcesPopularStatusesQuery>();
+            services.AddTransient<ICitiesPopularStatusesQuery, CitiesPopularStatusesQuery>();
+            services.AddTransient<IAvgCallTimeByAtcQuery, AvgCallTimeByAtcQuery>();
+            services.AddTransient<IAvgCallTimeByCityQuery, AvgCallTimeByCityQuery>();
+            services.AddTransient<ICitiesCallsQuery, CitiesCallsQuery>();
+            services.AddTransient<ICountriesCallsQuery, CountriesCallsQuery>();
 
             #endregion
 

@@ -1,0 +1,54 @@
+﻿<Page x:Class="ATC.Wpf.Views.Queries.FirmsSumConnectionCostInflationQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ATC.Wpf.Views.Queries"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FirmsSumConnectionCostInflationQueryPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=FirmsSumConnectionCostInflationQueryPageViewModel}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="../../Styles.xaml"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                     Height="30"
+                     Tag="С"
+                     Text="{Binding InputData.FirstValue, StringFormat='yyyy-MM-dd'}"/>
+            <TextBox Grid.Column="1" 
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Height="30"
+                     Tag="До"
+                     Text="{Binding InputData.SecondValue, StringFormat='yyyy-MM-dd'}"/>
+            <Button Grid.Column="2"
+                    Style="{StaticResource UsualBtnStyle}"
+                    Content="Выполнить"
+                    Height="30"
+                    Command="{Binding ExecuteCommand}"/>
+        </Grid>
+
+        <DataGrid Grid.Row="1"
+                  Style="{StaticResource UsualDataGrid}"
+                  ItemsSource="{Binding Data}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="АТС" Width="1*" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="До инфляции" Width="1*" Binding="{Binding Path=Before}"></DataGridTextColumn>
+                <DataGridTextColumn Header="После инфляции" Width="1*" Binding="{Binding Path=After}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

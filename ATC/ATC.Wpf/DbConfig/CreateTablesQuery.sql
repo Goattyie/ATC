@@ -298,7 +298,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_calls_by_call_date('2022-06-20')
+SELECT * FROM get_calls_by_call_date('2022-06-20');
 
 --Вывести тарифы которые заканчиваются в указанную дату
 CREATE OR REPLACE FUNCTION get_tariffs_by_end_date(end_dt DATE)
@@ -312,7 +312,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_tariffs_by_end_date('2022-11-22')
+SELECT * FROM get_tariffs_by_end_date('2022-11-22');
 
 --Вывести абонентов и их соц. положения
 CREATE OR REPLACE VIEW get_abonents_info AS
@@ -320,7 +320,7 @@ SELECT a.second_name, a.first_name, a.last_name, a.phone, s.name AS social_statu
 FROM abonents a
 INNER JOIN social_statuses s ON s.id = a.social_status_id;
 
-SELECT * FROM get_abonents_info
+SELECT * FROM get_abonents_info;
 
 --Вывести абонентов и их льготный тариф
 CREATE OR REPLACE VIEW get_abonents_benefit_info AS
@@ -328,7 +328,7 @@ SELECT a.second_name, a.first_name, a.last_name, a.phone, b.tariff AS tariff
 FROM abonents a
 INNER JOIN benefits b ON b.id = a.benefit_id;
 
-SELECT * FROM get_abonents_benefit_info
+SELECT * FROM get_abonents_benefit_info;
 
 --Вывести АТС и их районы
 CREATE OR REPLACE VIEW get_atces_area_info AS
@@ -336,7 +336,7 @@ SELECT atc.name, atc.address, a.name AS area_name
 FROM atces atc
 INNER JOIN areas a ON a.id = atc.area_id;
 
-SELECT * FROM get_atces_area_info
+SELECT * FROM get_atces_area_info;
 
 --Вывести звонки, коэффициент тарифа которых не равен 1
 CREATE OR REPLACE VIEW get_calls_where_tariff_ratio_is_not_null AS
@@ -346,7 +346,7 @@ INNER JOIN abonents a ON a.id = c.abonent_id
 LEFT OUTER JOIN tariffs t ON t.id = c.tariff_id
 WHERE t.ratio != 1;
 
-SELECT * FROM get_calls_where_tariff_ratio_is_not_null
+SELECT * FROM get_calls_where_tariff_ratio_is_not_null;
 
 --Вывести информацию о абонентах, которые хоть раз совершали звонки
 CREATE OR REPLACE VIEW get_abonents_have_calls AS
@@ -355,7 +355,7 @@ FROM calls c
 RIGHT OUTER JOIN abonents a ON a.id = c.abonent_id
 WHERE a.id IS NOT NULL;
 
-SELECT * FROM get_abonents_have_calls
+SELECT * FROM get_abonents_have_calls;
 
 -- Вывести информацию о абонентах, звонивших на указанный номер
 CREATE OR REPLACE FUNCTION get_abonents_have_calls_by_phone(ph TEXT)
@@ -370,16 +370,16 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_abonents_have_calls_by_phone('+77423780946')
+SELECT * FROM get_abonents_have_calls_by_phone('+77423780946');
 
 -- Вывести общее время разговоров на всех АТС
 CREATE OR REPLACE VIEW get_time_calls_sum AS
-SELECT a.name, a.address, SUM(c.time)
+SELECT a.name, a.address, SUM(c.time) AS "sum"
 FROM calls c
 JOIN atces a ON c.atc_id = a.id
 GROUP BY a.name, a.address;
 
-SELECT * FROM get_time_calls_sum
+SELECT * FROM get_time_calls_sum;
 
 -- Вывести количество абонентов с указанным соц. положением
 CREATE OR REPLACE FUNCTION get_count_abonents_by_social_status(social_status_name TEXT)
@@ -395,7 +395,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_count_abonents_by_social_status('Учитель')
+SELECT * FROM get_count_abonents_by_social_status('Учитель');
 
 -- Вывести абонентов, которые поговорили больше указанного времени
 CREATE OR REPLACE FUNCTION get_abonents_by_call_time_sum(sum_time INTERVAL)
@@ -411,7 +411,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_abonents_by_call_time_sum('02:00:00')
+SELECT * FROM get_abonents_by_call_time_sum('02:00:00');
 
 -- Вывести социальные положения и их количество абонентов, в которых встречается введенная подстрока 
 CREATE OR REPLACE FUNCTION get_social_status_by_mask(val TEXT)
@@ -431,7 +431,7 @@ SELECT * FROM get_social_status_by_mask('Учи');
 
 -- Вывести абонентов, которые потратили на звонки сумму более указанного числа
 CREATE OR REPLACE FUNCTION get_abonents_by_calls_cost_sum(sum_value DOUBLE PRECISION)
-RETURNS TABLE(first_name TEXT, second_name TEXT, last_name TEXT, phone TEXT, "Сумма" NUMERIC)
+RETURNS TABLE(first_name TEXT, second_name TEXT, last_name TEXT, phone TEXT, "sum" NUMERIC)
 AS $$
 BEGIN
 	RETURN QUERY
@@ -446,21 +446,21 @@ $$ LANGUAGE plpgsql;
 SELECT * FROM get_abonents_by_calls_cost_sum(100);
 
 -- Вывести абонентов, которые потратили на звонки сумму более указанного числа в указанную дату
-CREATE OR REPLACE FUNCTION get_abonents_by_calls_cost_sum(sum_value DOUBLE PRECISION, c_date DATE)
-RETURNS TABLE(first_name TEXT, second_name TEXT, last_name TEXT, phone TEXT, "Сумма" NUMERIC)
+CREATE OR REPLACE FUNCTION get_abonents_by_calls_cost_date_sum(sum_value DOUBLE PRECISION, c_date DATE)
+RETURNS TABLE(first_name TEXT, second_name TEXT, last_name TEXT, phone TEXT, "sum" NUMERIC)
 AS $$
 BEGIN
 	RETURN QUERY
 		SELECT a.first_name, a.second_name, a.last_name, a.phone, SUM(c.cost)
 		FROM abonents a
 		JOIN calls c ON a.id = c.abonent_id
-        WHERE c.call_date = c_date
+        	WHERE c.call_date = c_date
 		GROUP BY a.first_name, a.second_name, a.last_name, a.phone
 		HAVING SUM(c.cost) > sum_value;
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_abonents_by_calls_cost_sum(0, '2000-04-16');
+SELECT * FROM get_abonents_by_calls_cost_date_sum(0, '2000-04-16');
 
 -- Вывести станции и их общую прибыль за звонки до и после инфляции (уменьшение на 30%), в период за между двумя датами
 CREATE OR REPLACE FUNCTION get_firms_sum_connection_cost_inflation(first_date DATE, second_date DATE)
@@ -536,23 +536,23 @@ SELECT * FROM case_query('+77685917265');
 
 --Вывести разницу между общей стоимостью и средней стоимостью звонков
 CREATE OR REPLACE VIEW get_diff_call_cost AS
-    SELECT a.first_name, a.second_name, a.last_name, a.phone, sum(c.cost) - avg(c.cost)
+    SELECT a.first_name, a.second_name, a.last_name, a.phone, sum(c.cost) - avg(c.cost) AS "diff"
     FROM calls c
     JOIN abonents a ON a.id = c.abonent_id
-    GROUP BY a.first_name, a.second_name, a.last_name, a.phone, c.cost;
+    GROUP BY a.first_name, a.second_name, a.last_name, a.phone;
 
 SELECT * FROM get_diff_call_cost;
 
 --Кто чаще из соц. положений пользуется услугами АТС
 CREATE OR REPLACE VIEW get_atces_popular_statuses AS
-	SELECT a.name AS "atc", (SELECT s.name
+	SELECT a.name AS "name", (SELECT s.name
                 	FROM calls c
                 	JOIN atces atc ON atc.id = c.atc_id
                 	JOIN abonents ab ON ab.id = c.abonent_id
                 	JOIN social_statuses s ON s.id = ab.social_status_id
                 	WHERE atc.name = a.name
                 	GROUP BY a.name, s.name
-                	ORDER BY COUNT(s.name) DESC LIMIT 1)
+                	ORDER BY COUNT(s.name) DESC LIMIT 1) AS social_status
 	FROM calls c
 	JOIN atces a ON a.id = c.atc_id
 	JOIN abonents ab ON ab.id = c.abonent_id
@@ -563,14 +563,14 @@ SELECT * FROM get_atces_popular_statuses;
 
 --Кто чаще из соц. положений пользуется услугами АТС (города)
 CREATE OR REPLACE VIEW get_cities_popular_statuses AS
-    SELECT city.name AS "city", (SELECT s.name
+    SELECT city.name AS "name", (SELECT s.name
                     FROM calls c
                     JOIN cities ct ON ct.id = c.city_id
                     JOIN abonents ab ON ab.id = c.abonent_id
                     JOIN social_statuses s ON s.id = ab.social_status_id
                     WHERE ct.name = city.name
                     GROUP BY ct.name, s.name
-                    ORDER BY COUNT(s.name) DESC LIMIT 1)
+                    ORDER BY COUNT(s.name) DESC LIMIT 1) as social_status
     FROM calls c
     JOIN cities city ON city.id = c.city_id
     JOIN abonents ab ON ab.id = c.abonent_id

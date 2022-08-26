@@ -22,11 +22,17 @@ namespace ATC.Wpf.Extensions
 
                 foreach(var property in properties)
                 {
-                    var propertyName = property.GetAttribute<DisplayAttribute>();
-                    var ordinal = reader.GetOrdinal(propertyName);
-                    var value = reader.GetValue(ordinal);
-
-                    property.SetValue(model, value);
+                    try
+                    {
+                        var propertyName = property.GetAttribute<DisplayAttribute>();
+                        var ordinal = reader.GetOrdinal(propertyName);
+                        var value = reader.GetValue(ordinal);
+                        
+                        property.SetValue(model, value);
+                    }catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
                 }
 
                 list.Add(model);

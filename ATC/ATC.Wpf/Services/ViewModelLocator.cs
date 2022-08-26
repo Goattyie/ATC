@@ -59,5 +59,23 @@ namespace ATC.Wpf.Services
         public CallsWhereTariffRatioIsNotNullQueryPageViewModel CallsWhereTariffRatioIsNotNullQueryPageViewModel => IoC.Resolve<CallsWhereTariffRatioIsNotNullQueryPageViewModel>();
         public AbonentsHaveCallsQueryPageViewModel AbonentsHaveCallsQueryPageViewModel => IoC.Resolve<AbonentsHaveCallsQueryPageViewModel>();
         public AbonentsHaveCallsByPhoneQueryPageViewModel AbonentsHaveCallsByPhoneQueryPageViewModel => IoC.Resolve<AbonentsHaveCallsByPhoneQueryPageViewModel>();
+        public TimeCallsSumQueryPageViewModel TimeCallsSumQueryPageViewModel => IoC.Resolve<TimeCallsSumQueryPageViewModel>();
+        public CountAbonentsBySocialStatusQueryPageViewModel CountAbonentsBySocialStatusQueryPageViewModel => IoC.Resolve<CountAbonentsBySocialStatusQueryPageViewModel>();
+        public AbonentsByCallTimeSumQueryPageViewModel AbonentsByCallTimeSumQueryPageViewModel => IoC.Resolve<AbonentsByCallTimeSumQueryPageViewModel>();
+        public SocialStatusByMaskQueryPageViewModel SocialStatusByMaskQueryPageViewModel => IoC.Resolve<SocialStatusByMaskQueryPageViewModel>();
+        public AbonentsByCallsCostSumQueryPageViewModel AbonentsByCallsCostSumQueryPageViewModel => IoC.Resolve<AbonentsByCallsCostSumQueryPageViewModel>();
+        public AbonentsByCallsCostDateSumQueryPageViewModel AbonentsByCallsCostSumDateQueryPageViewModel => IoC.Resolve<AbonentsByCallsCostDateSumQueryPageViewModel>();
+        public FirmsSumConnectionCostInflationQueryPageViewModel FirmsSumConnectionCostInflationQueryPageViewModel => IoC.Resolve<FirmsSumConnectionCostInflationQueryPageViewModel>();
+        public AreasWithCitiesAndCountriesQueryPageViewModel AreasWithCitiesAndCountriesQueryPageViewModel => IoC.Resolve<AreasWithCitiesAndCountriesQueryPageViewModel>();
+        public CallsByAtcAreaNameQueryPageViewModel CallsByAtcAreaNameQueryPageViewModel => IoC.Resolve<CallsByAtcAreaNameQueryPageViewModel>();
+        public CallsNoByAtcAreaNameQueryPageViewModel CallsNoByAtcAreaNameQueryPageViewModel => IoC.Resolve<CallsNoByAtcAreaNameQueryPageViewModel>();
+        public CaseQueryPageViewModel CaseQueryPageViewModel => IoC.Resolve<CaseQueryPageViewModel>();
+        public DiffCallCostQueryPageViewModel DiffCallCostQueryPageViewModel => IoC.Resolve<DiffCallCostQueryPageViewModel>();
+        public AtcesPopularStatusesQueryPageViewModel AtcesPopularStatusesQueryPageViewModel => IoC.Resolve<AtcesPopularStatusesQueryPageViewModel>();
+        public CitiesPopularStatusesQueryPageViewModel CitiesPopularStatusesQueryPageViewModel => IoC.Resolve<CitiesPopularStatusesQueryPageViewModel>();
+        public AvgCallTimeByAtcQueryPageViewModel AvgCallTimeByAtcQueryPageViewModel => IoC.Resolve<AvgCallTimeByAtcQueryPageViewModel>();
+        public AvgCallTimeByCityQueryPageViewModel AvgCallTimeByCityQueryPageViewModel => IoC.Resolve<AvgCallTimeByCityQueryPageViewModel>();
+        public CitiesCallsQueryPageViewModel CitiesCallsQueryPageViewModel => IoC.Resolve<CitiesCallsQueryPageViewModel>();
+        public CountriesCallsQueryPageViewModel CountriesCallsQueryPageViewModel => IoC.Resolve<CountriesCallsQueryPageViewModel>();
     }
 }

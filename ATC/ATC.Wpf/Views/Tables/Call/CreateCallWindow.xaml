@@ -45,7 +45,7 @@
         <DatePickerTextBox Grid.Row="3" 
                  Tag="Фото"
                  MaxHeight="30"
-                 Text="{Binding Call.CallDate, StringFormat='dd.MM.yyyy'}"
+                 Text="{Binding Call.CallDate, StringFormat='yyyy-MM-dd'}"
                  Style="{StaticResource DefaultDatePickerTextBox}"/>
 
         
