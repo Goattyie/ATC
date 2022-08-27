@@ -27,7 +27,7 @@
             <TextBox Style="{StaticResource TextBoxWithWatermark}"
                      Height="30"
                      Tag="Дата"
-                     Text="{Binding InputData.Value, StringFormat='MM.dd.yyyy'}"/>
+                     Text="{Binding InputData.Value, StringFormat='yyyy.MM.dd'}"/>
             <Button Grid.Column="1"
                     Style="{StaticResource UsualBtnStyle}"
                     Content="Выполнить"

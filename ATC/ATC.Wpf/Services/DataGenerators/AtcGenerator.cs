@@ -47,7 +47,7 @@ namespace ATC.Wpf.Services.DataGenerators
                     Code = $"#{random.Next(1, 10000000)}",
                     Name = $"ATC {random.Next()}",
                     Address = $"ул. {_streets[random.Next(_streets.Length - 1)]} д. {random.Next(1, 1000)}",
-                    AreaId = random.Next(1, AreaGenerator.Count),
+                    AreaId = random.Next(1, AreaGenerator.Count + 1),
                     IsState = random.Next() % 2 == 0,
                     License = random.Next() % 2 == 0,
                     OpenYear = random.Next(1500, DateTime.Now.Year)

@@ -100,8 +100,8 @@ namespace ATC.Wpf.Services.DataGenerators
                     SecondName = _maleSecondNames[random.Next(_maleSecondNames.Length)],
                     LastName = _maleLastNames[random.Next(_maleLastNames.Length)],
                     Phone = $"+7{random.NextInt64(1000000000, 9999999999)}",
-                    BenefitId = random.Next(1, BenefitGenerator.Count),
-                    SocialStatusId = random.Next(1, SocialStatusGenerator.Count),
+                    BenefitId = random.Next(1, BenefitGenerator.Count + 1),
+                    SocialStatusId = random.Next(1, SocialStatusGenerator.Count + 1),
                     Photo = "Photos/BasePhoto.jpg"
                 });
             }

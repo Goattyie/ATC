@@ -49,8 +49,8 @@
                 <DataGridTextColumn Header="#" Width="70" MaxWidth="100" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Path=Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Коэффициент" Width="*" Binding="{Binding Path=Ratio}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата начала" Width="*" Binding="{Binding Path=StartDate, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата конца" Width="*" Binding="{Binding Path=EndDate, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата начала" Width="*" Binding="{Binding Path=StartDate, StringFormat='yyyy.MM.dd'}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата конца" Width="*" Binding="{Binding Path=EndDate, StringFormat='yyyy.MM.dd'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

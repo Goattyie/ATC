@@ -32,7 +32,7 @@ namespace ATC.Wpf.Services.DataGenerators
             for (int i = 0; i < Count; i++)
                 await Repository.Create(new BenefitModel 
                 { 
-                    BenefitTypeId = random.Next(1, BenefitTypeGenerator.Count), 
+                    BenefitTypeId = random.Next(1, BenefitTypeGenerator.Count + 1), 
                     Conditions = $"Условие #{random.Next(1000)}", 
                     Tariff = $"Тариф #{random.Next(100)}", 
                 });

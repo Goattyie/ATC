@@ -37,9 +37,9 @@ namespace ATC.Wpf.Services.DataGenerators
                     AtcId = random.Next(1, AtcGenerator.Count),
                     CallDate = DateTime.UtcNow.AddDays(-random.Next(1, 10000)),
                     Time = TimeSpan.FromMinutes(random.Next(1, 59)) + TimeSpan.FromSeconds(random.Next(1, 59)),
-                    AbonentId = random.Next(1, AbonentGenerator.Count),
-                    CityId = random.Next(1, CityGenerator.Count),
-                    TariffId = random.Next(1, TariffGenerator.Count),
+                    AbonentId = random.Next(1, AbonentGenerator.Count + 1),
+                    CityId = random.Next(1, CityGenerator.Count + 1),
+                    TariffId = random.Next(1, TariffGenerator.Count + 1),
                     Cost = random.Next(1, 300),
                     Phone = $"+7{random.NextInt64(1000000000, 9999999999)}",
                 });
