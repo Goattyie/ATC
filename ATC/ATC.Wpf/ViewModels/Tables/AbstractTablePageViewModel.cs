@@ -58,6 +58,9 @@ namespace ATC.Wpf.ViewModels.Tables
 
                 return Task.CompletedTask;
             });
+
+            DataInitializer.OnGenerate += async () => await LoadData();
+
         }
 
         protected abstract IEnumerable<TModel> FilterData(IEnumerable<TModel> allData);

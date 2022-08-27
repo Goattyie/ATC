@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace ATC.Wpf.Queries.Interfaces
 {
@@ -11,7 +12,7 @@ namespace ATC.Wpf.Queries.Interfaces
         public string Address { get; set; }
         
         [DisplayName("Sum")]
-        public double Sum { get; set; }
+        public TimeSpan Sum { get; set; }
     }
 
     internal interface ITimeCallsSumQuery : IQuery<BaseInput, TimeCallsSumResult>

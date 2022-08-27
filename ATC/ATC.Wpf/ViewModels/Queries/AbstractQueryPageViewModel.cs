@@ -19,7 +19,7 @@ namespace ATC.Wpf.ViewModels.Queries
         public TInput InputData { get; set; }
         public ObservableCollection<TOutput> Data { get; set; }
 
-        public IAsyncCommand ExecuteCommand => new AsyncCommand(async () =>
+        public virtual IAsyncCommand ExecuteCommand => new AsyncCommand(async () =>
         {
             Data.Clear();
 

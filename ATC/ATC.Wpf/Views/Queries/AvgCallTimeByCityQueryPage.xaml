@@ -3,34 +3,69 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ATC.Wpf.Views.Queries"
+      xmlns:local="clr-namespace:ATC.Wpf.Views.Queries" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="AvgCallTimeByCityQueryPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=AvgCallTimeByCityQueryPageViewModel}">
 
     <Page.Resources>
         <ResourceDictionary Source="../../Styles.xaml"/>
     </Page.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="700"/>
+                <RowDefinition Height="500"/>
+            </Grid.RowDefinitions>
 
-        <Button Grid.Column="1"
-                Style="{StaticResource UsualBtnStyle}"
-                Content="Выполнить"
-                Height="30"
-                Command="{Binding ExecuteCommand}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0"
+                        Style="{StaticResource UsualBtnStyle}"
+                        Content="Выполнить"
+                        Height="30"
+                        Margin="0 0 5 0"
+                        Command="{Binding ExecuteCommand}"/>
 
-        <DataGrid Grid.Row="1"
+                <Button Grid.Column="1"
+                        Style="{StaticResource UsualBtnStyle}"
+                        Content="Экспортировать"
+                        Margin="5 0 0 0"
+                        Height="30"
+                        Command="{Binding ExportCommand}"/>
+            </Grid>
+            
+            <DataGrid Grid.Row="1"
                   Style="{StaticResource UsualDataGrid}"
                   ItemsSource="{Binding Data}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Город" Width="1*" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Среднее время" Width="1*" Binding="{Binding Path=Avg}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Город" Width="1*" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Среднее время" Width="1*" Binding="{Binding Path=Avg}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <lvc:CartesianChart Grid.Row="2" 
+                                Series="{Binding SeriesCollection}">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Labels="{Binding Labels}" 
+                              Foreground="Black"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis LabelFormatter="{Binding Formatter}"  
+                              Foreground="Black"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+                <lvc:CartesianChart.SeriesColors>
+                    <lvc:ColorsCollection>
+                        <Color>Red</Color>
+                    </lvc:ColorsCollection>
+                </lvc:CartesianChart.SeriesColors>
+            </lvc:CartesianChart>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -612,4 +612,3 @@ CREATE OR REPLACE VIEW get_countries_calls AS
     WHERE Position('+7' IN c.phone) != 1;
     
 SELECT * FROM get_countries_calls;
-

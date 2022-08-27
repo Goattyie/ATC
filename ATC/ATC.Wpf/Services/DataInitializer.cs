@@ -1,4 +1,5 @@
 ﻿using ATC.Wpf.Services.DataGenerators;
+using System;
 using System.Threading.Tasks;
 
 namespace ATC.Wpf.Services
@@ -15,6 +16,8 @@ namespace ATC.Wpf.Services
         private readonly AbonentGenerator _abonentGenerator;
         private readonly AtcGenerator _atcGenerator;
         private readonly CallGenerator _callGenerator;
+
+        public static event Action OnGenerate;
 
         public DataInitializer(CountryGenerator countryGenerator, 
             CityGenerator cityGenerator,
@@ -51,6 +54,8 @@ namespace ATC.Wpf.Services
             await _abonentGenerator.Generate();
             await _atcGenerator.Generate();
             await _callGenerator.Generate();
+
+            OnGenerate?.Invoke();
         }
     }
 }

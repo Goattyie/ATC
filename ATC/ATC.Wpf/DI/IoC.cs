@@ -1,4 +1,6 @@
 ﻿using ATC.Wpf.Abstractions;
+using ATC.Wpf.Exporter.Interfaces;
+using ATC.Wpf.Exporter.QueryExporters;
 using ATC.Wpf.Queries;
 using ATC.Wpf.Queries.Interfaces;
 using ATC.Wpf.Repositories;
@@ -82,8 +84,8 @@ namespace ATC.Wpf.DI
 
             #region ViewModels
 
+            services.AddSingleton<MainWindowViewModel>();
             services.AddTransient<SignInWindowViewModel>();
-            services.AddTransient<MainWindowViewModel>();
             services.AddTransient<AtcPageViewModel>();
             services.AddTransient<CreateAtcWindowViewModel>();
             services.AddTransient<UpdateAtcWindowViewModel>();
@@ -225,6 +227,12 @@ namespace ATC.Wpf.DI
             services.AddTransient<IAvgCallTimeByCityQuery, AvgCallTimeByCityQuery>();
             services.AddTransient<ICitiesCallsQuery, CitiesCallsQuery>();
             services.AddTransient<ICountriesCallsQuery, CountriesCallsQuery>();
+
+            #endregion
+
+            #region Exporters
+
+            services.AddTransient<IExporter<AvgCallTimeResult>, AvgCallTimeByCityQueryExporter>();
 
             #endregion
 

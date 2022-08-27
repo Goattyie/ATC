@@ -35,13 +35,13 @@
                  Style="{StaticResource TextBoxWithWatermark}"
                  Tag="Дата начала"
                  MaxHeight="30"
-                 Text="{Binding Tariff.StartDate, StringFormat='dd.MM.yyyy'}"/>
+                 Text="{Binding Tariff.StartDate, StringFormat='yyyy.MM.dd'}"/>
 
         <TextBox Grid.Row="3" 
                  Style="{StaticResource TextBoxWithWatermark}"
                  Tag="Дата конца"
                  MaxHeight="30"
-                 Text="{Binding Tariff.EndDate, StringFormat='dd.MM.yyyy'}"/>
+                 Text="{Binding Tariff.EndDate, StringFormat='yyyy.MM.dd'}"/>
 
         <Button Grid.Row="4"
                 Style="{StaticResource UsualBtnStyle}"
